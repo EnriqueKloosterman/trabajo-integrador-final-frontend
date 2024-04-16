@@ -8,5 +8,12 @@ import List from './componentes/List';
 import { UserProvider } from './UserContext';
 import './App.css';
 import NotFound from './componentes/NotFound';
-
+import category from './componentes/category';
+import description from './componentes/description';
+import detail from './componentes/detail';
+import discount from './componentes/discount';
+import Footer from './componentes/Footer';
+import Header from './componentes/Header';
+import product_image from '.componentes/product_image';
+import product from './componentes/product';
 export default App;
