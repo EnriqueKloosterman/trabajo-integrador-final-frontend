@@ -14,6 +14,38 @@ import detail from './componentes/detail';
 import discount from './componentes/discount';
 import Footer from './componentes/Footer';
 import Header from './componentes/Header';
-import product_image from '.componentes/product_image';
+import productImage from '.componentes/productImage';
 import product from './componentes/product';
+
+
+function App() {
+    return (
+        <UserProvider>
+            <Routes>
+                <Route path="/" element={<Login />} />
+                <Route path="/nosotros" element={<Nosotros />} />
+                <Route path="/register" element={<Registro />} />
+                <Route path="/category" element={<Category />} />
+                <Route path="/description" element={<Description />} />
+                <Route path="/detail" element={<Contacto />} />
+                <Route path="/discount" element={<Discount />} />
+                <Route path="/contacto" element={<Contacto />} />
+                <Route path="/footer" element={<Footer />} />
+                <Route path="/header" element={<Header />} />
+                <Route path="/productImage" element={<ProductImage />} />
+                <Route path="/product" element={<Product />} />
+                <Route element={<ProtectedRoute />}>
+                    <Route path="/list" element={<List />} />
+                </Route>
+                <Route element={<ProtectedRoute />}>
+                    <Route path="/users" element={<Users />} />
+                </Route>
+                <Route path="*" element={<NotFound />}/>
+            </Routes>
+        </UserProvider>
+    );
+}
+
+
+
 export default App;
