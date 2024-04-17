@@ -1,19 +1,32 @@
-import { Routes, Route } from 'react-router-dom';
-import Nosotros from './componentes/Nosotros';
-import Users from './componentes/Users';
-import Login from './componentes/Login';
-import Registro from './componentes/Registro';
-import Contacto from './componentes/Contacto';
-import List from './componentes/List';
-import { UserProvider } from './UserContext';
-import './App.css';
-import NotFound from './componentes/NotFound';
-import category from './componentes/category';
-import description from './componentes/description';
-import detail from './componentes/detail';
-import discount from './componentes/discount';
-import Footer from './componentes/Footer';
-import Header from './componentes/Header';
-import product_image from '.componentes/product_image';
-import product from './componentes/product';
+import { useState } from 'react';
+import { Header } from './components/Header';
+import { ProductList } from './components/ProductList';
+
+function App() {
+	const [allProducts, setAllProducts] = useState([]);
+	const [total, setTotal] = useState(0);
+	const [countProducts, setCountProducts] = useState(0);
+
+	return (
+		<>
+			<Header
+				allProducts={allProducts}
+				setAllProducts={setAllProducts}
+				total={total}
+				setTotal={setTotal}
+				countProducts={countProducts}
+				setCountProducts={setCountProducts}
+			/>
+			<ProductList
+				allProducts={allProducts}
+				setAllProducts={setAllProducts}
+				total={total}
+				setTotal={setTotal}
+				countProducts={countProducts}
+				setCountProducts={setCountProducts}
+			/>
+		</>
+	);
+}
+
 export default App;
