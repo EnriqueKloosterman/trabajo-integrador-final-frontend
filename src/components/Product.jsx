@@ -81,27 +81,39 @@ const Product = () => {
     }
 
     // Botón de producto completo
-    const toggleCompleted = (id) => {
-        const productToUpdate = products.find((product) => product.id === id);
-        productToUpdate.isClicked = !productToUpdate.isClicked;
-        fetch(`${productUrl}/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(productToUpdate),
-        })
+    
+        
+        const toggleCompleted = (id) => {
+            // Encuentra el producto a actualizar
+            const productToUpdate = products.find((product) => product.id === id);
+            
+            // Crea una nueva versión del producto con el estado actualizado
+            const updatedProduct = {
+                ...productToUpdate,
+                isClicked: !productToUpdate.isClicked
+            };
+            
+            // Realiza la solicitud PUT para actualizar el producto en el servidor
+            fetch(`${productUrl}/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedProduct),
+            })
             .then((response) => response.json())
-            .then((updatedProduct) => {
+            .then((updatedProductFromServer) => {
+                // Actualiza el estado local con el producto actualizado
                 setProducts((prevProducts) =>
-                    prevProducts.map((product) => (product.id === id ? updatedProduct : product))
+                    prevProducts.map((product) => (product.id === id ? updatedProductFromServer : product))
                 );
             })
             .catch((error) => {
                 console.error('Error al actualizar el producto:', error);
             });
-    };
-
+        };
+           
+           
     return (
         <div>
             {/* Formulario para crear un nuevo producto */}
@@ -131,6 +143,6 @@ const Product = () => {
             </div>
         </div>
     );
-}
 
+}
 export default Product;
