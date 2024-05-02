@@ -15,9 +15,9 @@ const Product = () => {
 
     const createProduct = (e) => {
         e.preventDefault();
-        const productValue = e.target.elements.product.value;
+        const productName = e.target.elements.product.value;
         const product = {
-            product: productName,
+            productName: productValue,
         };
         fetch(productUrl, {
             method: "POST",
@@ -92,7 +92,7 @@ const Product = () => {
         })
         .then((updatedProductFromServer) => {
             setProducts((prevProducts) =>
-                prevProducts.map((product) => (product.id === id ? updatedProduct : product))
+                prevProducts.map((product) => (product.id === id ? updatedProductFromServer : product))
             );
         })
         .catch((error) => {
