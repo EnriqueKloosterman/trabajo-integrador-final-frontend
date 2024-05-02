@@ -30,7 +30,7 @@ function App() {
 				setCountProducts={setCountProducts}
 			/>
 
-			<Product />
+			
 		</>
 	);
 }
