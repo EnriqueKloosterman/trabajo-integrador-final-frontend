@@ -1,6 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import { FaRegTrashAlt, FaEdit } from 'react-icons/fa';
-import Header from "./Header";
 
 const Product = () => {
     const productUrl = "https://mockapi.io/projects/6627d743b625bf088c0a0109/products";
@@ -12,16 +10,14 @@ const Product = () => {
             .then((res) => res.json())
             .then((data) => {
                 setProducts(data);
-                console.log(data);
             });
     }, []);
 
-    // función para crear un nuevo producto
     const createProduct = (e) => {
         e.preventDefault();
         const productValue = e.target.elements.product.value;
         const product = {
-            product: productValue,
+            product: productName,
         };
         fetch(productUrl, {
             method: "POST",
@@ -32,25 +28,21 @@ const Product = () => {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
                 setProducts([...products, data]);
                 e.target.reset();
             });
     };
 
-    // función para eliminar un producto a partir de su id
     const deleteProduct = (id) => {
         fetch(`${productUrl}/${id}`, {
             method: "DELETE",
         })
             .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
+            .then(() => {
                 setProducts(products.filter((product) => product.id !== id));
             });
     };
 
-    // función para editar un producto a partir de su id
     const updateProduct = (e, id) => {
         e.preventDefault();
         const productName = e.target.elements.product.value;
@@ -62,7 +54,6 @@ const Product = () => {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
                 setProducts(products.map((product) => (product.id === id ? data : product)));
                 closeModal();
             });
@@ -80,40 +71,35 @@ const Product = () => {
         modal.current.close();
     }
 
-    // Botón de producto completo
-    
-        
-        const toggleCompleted = (id) => {
-            // Encuentra el producto a actualizar
-            const productToUpdate = products.find((product) => product.id === id);
-            
-            // Crea una nueva versión del producto con el estado actualizado
-            const updatedProduct = {
-                ...productToUpdate,
-                isClicked: !productToUpdate.isClicked
-            };
-            
-            // Realiza la solicitud PUT para actualizar el producto en el servidor
-            fetch(`${productUrl}/${id}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(updatedProduct),
-            })
-            .then((response) => response.json())
-            .then((updatedProductFromServer) => {
-                // Actualiza el estado local con el producto actualizado
-                setProducts((prevProducts) =>
-                    prevProducts.map((product) => (product.id === id ? updatedProductFromServer : product))
-                );
-            })
-            .catch((error) => {
-                console.error('Error al actualizar el producto:', error);
-            });
+    const toggleCompleted = (id) => {
+        const productToUpdate = products.find((product) => product.id === id);
+        const updatedProduct = {
+            ...productToUpdate,
+            completed: !productToUpdate.completed
         };
-           
-           
+        fetch(`${productUrl}/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updatedProduct),
+        })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('La solicitud de actualización no fue exitosa');
+            }
+            return response.json();
+        })
+        .then((updatedProductFromServer) => {
+            setProducts((prevProducts) =>
+                prevProducts.map((product) => (product.id === id ? updatedProduct : product))
+            );
+        })
+        .catch((error) => {
+            console.error('Error al actualizar el producto:', error);
+        });
+    };
+
     return (
         <div>
             {/* Formulario para crear un nuevo producto */}
@@ -127,8 +113,9 @@ const Product = () => {
                 {products.map((product) => (
                     <li key={product.id}>
                         {product.product}
-                        <button onClick={() => deleteProduct(product.id)}><FaRegTrashAlt /></button>
-                        <button onClick={() => selectProduct(product)}><FaEdit /></button>
+                        <button onClick={() => deleteProduct(product.id)}>Delete</button>
+                        <button onClick={() => selectProduct(product)}>Edit</button>
+                        <button onClick={() => toggleCompleted(product.id)}>Toggle Completed</button>
                     </li>
                 ))}
             </ul>
@@ -143,6 +130,6 @@ const Product = () => {
             </div>
         </div>
     );
-
 }
+
 export default Product;

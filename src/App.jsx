@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Header } from './components/Header';
 import { ProductList } from './components/ProductList';
-import Product from './Product';
+//import Product from './Product';
+
 
 function App() {
 	const [allProducts, setAllProducts] = useState([]);
