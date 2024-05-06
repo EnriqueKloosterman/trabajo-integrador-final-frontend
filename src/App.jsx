@@ -1,38 +1,20 @@
-import { useState } from 'react';
-import { Header } from './components/Header';
-import { ProductList } from './components/ProductList';
-//import Product from './Product';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Register from './Register';
+import Login from './Login';
 
-
-function App() {
-	const [allProducts, setAllProducts] = useState([]);
-	const [total, setTotal] = useState(0);
-	const [countProducts, setCountProducts] = useState(0);
-
-
-
-	return (
-		<>
-			<Header
-				allProducts={allProducts}
-				setAllProducts={setAllProducts}
-				total={total}
-				setTotal={setTotal}
-				countProducts={countProducts}
-				setCountProducts={setCountProducts}
-			/>
-			<ProductList
-				allProducts={allProducts}
-				setAllProducts={setAllProducts}
-				total={total}
-				setTotal={setTotal}
-				countProducts={countProducts}
-				setCountProducts={setCountProducts}
-			/>
-
-			
-		</>
-	);
-}
+const App = () => {
+  return (
+    <Router>
+      <div>
+        <h1>Aplicación de Registro y Login</h1>
+        <Routes>
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+};
 
 export default App;
