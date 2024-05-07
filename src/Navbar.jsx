@@ -32,7 +32,7 @@ export const Navbar = () => {
                     <nav>
                         <Link to='/login'>Iniciar sesión</Link>
                         <Link to='/register'>Registrarse</Link>
-						<Link to='/contact'>Contact</Link>
+						
                     </nav>
                 )}
             </header>

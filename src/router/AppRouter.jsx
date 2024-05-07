@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { Navbar } from '../Navbar';
 import {
-    Contact,
 	HomePage,
 	DashboardPage,
 	LoginPage,
@@ -16,7 +15,7 @@ export const AppRouter = () => {
 				<Route path='/' element={<Navbar />}>
 					<Route index element={<HomePage />} />
 					<Route path='login' element={<LoginPage />} />
-                    <Route path='contac' element={< Contact />} />
+                
 					<Route path='register' element={<RegisterPage />} />
 					<Route
 						path='dashboard'
