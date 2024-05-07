@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import logo from "./assets/logo.png" 
 
 export const Navbar = () => {
     const { state } = useLocation();
@@ -16,7 +17,7 @@ export const Navbar = () => {
             <header>
                 <h1>
                     <Link to='/'>
-                        <img src="logo.png" alt="Aventuras en la cocina " />
+                        <img src={logo} alt="Aventuras en la cocina " style={{ maxWidth: '100px', maxHeight: '50px' }} />
                     </Link>
                 </h1>
 

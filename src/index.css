@@ -8,7 +8,7 @@
 body {
 	max-width: 1200px;
 	margin: 0 auto;
-	background-color: #f8f9fa; /* Light gray background */
+	background-color: #f8f9fa; /* Fondo gris claro */
 }
 
 header {
@@ -16,13 +16,13 @@ header {
 	justify-content: space-between;
 	align-items: center;
 	padding: 15px;
-	background-color: #007bff; /* Blue header */
-	color: #fff;
+	background-color: #98fb98; /* Verde claro */
+	color: #000; /* Letras negras */
 }
 
 h1 a {
 	text-decoration: none;
-	color: #fff;
+	color: #000; /* Letras negras */
 }
 
 nav,
@@ -34,36 +34,36 @@ nav,
 
 nav a {
 	text-decoration: none;
-	color: #fff;
+	color: #000; /* Letras negras */
 }
 
 .username {
-	color: #fff;
+	color: #000; /* Letras negras */
 }
 
 .btn-logout {
-	border: 1px solid #fff;
+	border: 1px solid #000; /* Borde negro */
 	background: none;
-	color: #fff;
+	color: #000; /* Letras negras */
 	padding: 5px 20px;
 	border-radius: 6px;
 	cursor: pointer;
 }
 
 .btn-logout:hover {
-	background-color: #fff;
-	color: #007bff; /* Blue on hover */
+	background-color: #000; /* Fondo negro al pasar el ratón */
+	color: #98fb98; /* Verde claro al pasar el ratón */
 }
 
-/* Main content wrapper */
+/* Contenedor principal del contenido */
 .wrapper {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	height: 500px;
-	background-color: #fff; /* White background */
+	background-color: #fff; /* Fondo blanco */
 	border-radius: 10px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Efecto de sombra */
 }
 
 form {
