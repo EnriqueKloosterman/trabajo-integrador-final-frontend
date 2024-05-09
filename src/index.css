@@ -1,150 +1,116 @@
 * {
-	margin: 0;
-	padding: 0;
-	font-family: Poppins;
-	box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Poppins;
+    box-sizing: border-box;
 }
 
-body {
-	max-width: 1200px;
-	margin: 0 auto;
-	background-color: #f8f9fa; /* Fondo gris claro */
-}
-
-header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 15px;
-	background-color: #98fb98; /* Verde claro */
-	color: #000; /* Letras negras */
-}
-
-h1 a {
-	text-decoration: none;
-	color: #000; /* Letras negras */
-}
-
-nav,
-.user {
-	display: flex;
-	align-items: center;
-	gap: 20px;
-}
-
-nav a {
-	text-decoration: none;
-	color: #000; /* Letras negras */
-}
-
-.username {
-	color: #000; /* Letras negras */
-}
-
-.btn-logout {
-	border: 1px solid #000; /* Borde negro */
-	background: none;
-	color: #000; /* Letras negras */
-	padding: 5px 20px;
-	border-radius: 6px;
-	cursor: pointer;
-}
-
-.btn-logout:hover {
-	background-color: #000; /* Fondo negro al pasar el ratón */
-	color: #98fb98; /* Verde claro al pasar el ratón */
-}
-
-/* Contenedor principal del contenido */
 .wrapper {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 500px;
-	background-color: #fff; /* Fondo blanco */
-	border-radius: 10px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Efecto de sombra */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    width: 100%;
 }
 
 form {
-	display: flex;
-	align-items: center;
-	flex-direction: column;
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .input-group {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	margin: 10px 0;
-	text-align: center;
+    margin-bottom: 20px;
 }
-.wrapper {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	height: 100vh;
-  }
-  
-  form {
-	width: 100%;
-	max-width: 400px;
-	padding: 20px;
-	background-color: #f2f2f2;
-	border-radius: 10px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	margin-bottom: 20px;
-  }
-  
-  .input-group {
-	margin-bottom: 20px;
-  }
-  
-  .input-group input,
-  .input-group textarea {
-	width: 100%;
-	padding: 10px;
-	border-radius: 5px;
-	border: 1px solid #ccc;
-	box-sizing: border-box;
-	margin-top: 5px;
-  }
-  
-  .input-group label {
-	font-weight: bold;
-  }
-  
-  button[type='submit'] {
-	width: 100%;
-	padding: 10px;
-	background-color: #007bff;
-	color: #fff;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
-  }
-  
-  button[type='submit']:hover {
-	background-color: #0056b3;
-  }
-  
-  .nosotros-info {
-	width: 100%;
-	max-width: 400px;
-	padding: 20px;
-	background-color: #f2f2f2;
-	border-radius: 10px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .nosotros-info h3 {
-	font-size: 24px;
-	margin-bottom: 20px;
-  }
-  
-  .nosotros-info p {
-	margin-bottom: 10px;
-  }
-  
+
+.input-group input, .input-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.input-group label {
+    margin-bottom: 5px;
+    display: block;
+    font-weight: bold;
+}
+
+.confirmation-message {
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.about-us {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.about-us h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.about-us p {
+    margin-bottom: 10px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #98fb98; 
+    color: #000; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: #000; 
+    padding: 10px; 
+    border-radius: 5px; 
+    transition: background-color 0.3s ease; 
+}
+
+nav a:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.username {
+    color: #000; 
+}
+
+.btn-logout {
+    border: 1px solid #000; 
+    background: none;
+    color: #000; 
+    padding: 5px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-logout:hover {
+    background-color: #000; 
+    color: #98fb98; 
+}
