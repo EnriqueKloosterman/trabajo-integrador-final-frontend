@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from '../hook/useForm'; 
 
+
 const ContactPage = () => {
     const { name, email, subject, message, onInputChange, onResetForm } = useForm({
         name: '',
@@ -69,8 +70,15 @@ const ContactPage = () => {
 
                 <button type='submit'>Enviar</button>
             </form>
+        
+        <h3>Nosotros</h3>
+        <p>Somos un equipo comprometido con el desarrollo de aplicaciones web.</p>
+        <p>Nuestro objetivo es crear soluciones innovadoras para nuestros clientes.</p>
+        <p>¡Gracias por visitarnos!</p>
         </div>
     );
 };
-
+    
+        
+   
 export default ContactPage;

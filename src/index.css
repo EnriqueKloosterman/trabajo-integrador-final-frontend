@@ -79,3 +79,72 @@ form {
 	margin: 10px 0;
 	text-align: center;
 }
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+  }
+  
+  form {
+	width: 100%;
+	max-width: 400px;
+	padding: 20px;
+	background-color: #f2f2f2;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	margin-bottom: 20px;
+  }
+  
+  .input-group {
+	margin-bottom: 20px;
+  }
+  
+  .input-group input,
+  .input-group textarea {
+	width: 100%;
+	padding: 10px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	margin-top: 5px;
+  }
+  
+  .input-group label {
+	font-weight: bold;
+  }
+  
+  button[type='submit'] {
+	width: 100%;
+	padding: 10px;
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+  }
+  
+  button[type='submit']:hover {
+	background-color: #0056b3;
+  }
+  
+  .nosotros-info {
+	width: 100%;
+	max-width: 400px;
+	padding: 20px;
+	background-color: #f2f2f2;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .nosotros-info h3 {
+	font-size: 24px;
+	margin-bottom: 20px;
+  }
+  
+  .nosotros-info p {
+	margin-bottom: 10px;
+  }
+  
