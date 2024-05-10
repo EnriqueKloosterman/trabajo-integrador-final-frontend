@@ -114,3 +114,46 @@ nav a:hover {
     background-color: #000; 
     color: #98fb98; 
 }
+
+/* Recipe.css */
+.recipe {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+  
+  .recipe img {
+    width: 150px;
+    height: 150px;
+    margin-right: 20px;
+  }
+  
+  .recipe-details h2 {
+    margin-bottom: 10px;
+  }
+  
+  /* RecipeDetails.css */
+  .recipe-details-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .recipe-details img {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .recipe-details h2 {
+    margin-bottom: 10px;
+  }
+  
+  .recipe-details h3 {
+    margin-bottom: 5px;
+  }
+  
+  .recipe-details ul,
+  .recipe-details ol {
+    margin-left: 20px;
+  }
