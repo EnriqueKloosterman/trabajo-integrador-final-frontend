@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import ContactPage from '../pages/ContactPage';
+// import ArticleDetail from '../pages/ArticleDetail';
 import { Navbar } from '../Navbar';
 import {
 	HomePage,
@@ -18,7 +19,9 @@ export const AppRouter = () => {
 					<Route path='login' element={<LoginPage />} />
 					<Route path='contact' element={<ContactPage />} />
 					<Route path='register' element={<RegisterPage />} />
+					{/* <Route path='articledetail' element={<ArticleDetail />} /> */}
 					
+
 					<Route
 						path='dashboard'
 						element={
