@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import ContactPage from '../pages/ContactPage';
-//import RecipePage from '..pages/RecipePage';
-//import RecipeDetailPage from '..pages/RecipeDetailPage';
+//import Recipe from '../Recipe';
+//import RecipeDetail from '../RecipeDetail';
 
 // import ArticleDetail from '../pages/ArticleDetail';
 
@@ -23,8 +23,9 @@ export const AppRouter = () => {
 					<Route path='login' element={<LoginPage />} />
 					<Route path='contact' element={<ContactPage />} />
 					<Route path='register' element={<RegisterPage />} />
-					
-
+			
+					{/*<Route path='recipedetail' element={<RecipeDetail />} />*/}
+					{/*<Route path='recipe' element={<Recipe />} />/*/}
 					{/* <Route path='articledetail' element={<ArticleDetail />} /> */}
 					
 
