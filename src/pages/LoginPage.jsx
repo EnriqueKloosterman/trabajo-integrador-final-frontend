@@ -5,9 +5,8 @@ import { useForm } from '../hook/useForm';
 export const LoginPage = () => {
 	const navigate = useNavigate();
 
-	const { name, email, password, onInputChange, onResetForm } =
+	const {name, email, password, onInputChange, onResetForm } =
 		useForm({
-			name: '',
 			email: '',
 			password: '',
 		});
@@ -30,19 +29,6 @@ export const LoginPage = () => {
 		<div className='wrapper'>
 			<form onSubmit={onLogin}>
 				<h1>Iniciar Sesión</h1>
-
-				<div className='input-group'>
-					<input
-						type='text'
-						name='name'
-						id='name'
-						value={name}
-						onChange={onInputChange}
-						required
-						autoComplete='off'
-					/>
-					<label htmlFor='name'>Nombre:</label>
-				</div>
 
 				<div className='input-group'>
 					<input
