@@ -7,6 +7,7 @@ const RecipeForm = () => {
     title: '',
     description: [],
     ingredients: [],
+    category: '',
     img: '',
     userId: 1, // Usar mientras no haya inicio de sesión de usuarios
   });
@@ -93,6 +94,29 @@ const RecipeForm = () => {
             required
             className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
           />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="category" className="block text-black">Categoría</label>
+          <select
+            id="category"
+            name="category"
+            value={formData.category}
+            onChange={handleChange}
+            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
+            required
+          >
+            <option value="">Selecciona una categoría</option>
+            <option value="carnes blancas">Carnes Blancas</option>
+            <option value="carnes rojas">Carnes Rojas</option>
+            <option value="pescados">Pescados</option>
+            <option value="vegetariana">Vegetariana</option>
+            <option value="vegana">Vegana</option>
+            <option value="postres">Postres</option>
+            <option value="ensaladas">Ensaladas</option>
+            <option value="sopas">Sopas</option>
+            <option value="aperitivos">Aperitivos</option>
+            <option value="otros">Otros</option>
+          </select>
         </div>
         <div className="mb-4">
           <label htmlFor="img" className="block text-black">URL de la imagen</label>
