@@ -1,176 +1,123 @@
-// import React, { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
-// import { useForm } from '../hook/useForm';
-// import ReactCrop from 'react-image-crop';
-// import 'react-image-crop/dist/ReactCrop.css';
+import React, { useState } from 'react';
+import Swal from 'sweetalert2';
 
-// export const RegisterPage = () => {
-//     const navigate = useNavigate();
+const RegisterPage = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    image: '',
+  });
 
-//     const { name, email, password, lastname, onInputChange, onResetForm } =
-//         useForm({
-//             name: '',
-//             email: '',
-//             password: '',
-//             lastname: '',
-//         });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
-//     const [image, setImage] = useState(null);
-//     const [imagePreview, setImagePreview] = useState(null);
-//     const [crop, setCrop] = useState({ aspect: 1 / 1, width: 50, height: 50 });
-//     const [completedCrop, setCompletedCrop] = useState(null);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('http://localhost:3306/registerpage', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-//     const onImageChange = (e) => {
-//         const file = e.target.files[0];
-//         setImage(file);
-//         setImagePreview(URL.createObjectURL(file));
-//     };
+      if (response.status === 201) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Registro exitoso',
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error al registrarse',
+          text: 'Hubo un problema al crear tu cuenta. Por favor, inténtalo de nuevo.',
+        });
+      }
+    } catch (error) {
+      console.error('Error al registrarse:', error);
+    }
+  };
 
-//     const onImageLoaded = (image) => {
-//         setImagePreview(image);
-//     };
+  return (
+    <div className="bg-green-100 p-6 rounded-lg shadow-lg max-w-md mx-auto">
+      <h2 className="text-2xl font-bold mb-4 text-black">Registrarse</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="mb-4">
+          <label htmlFor="firstName" className="block text-black">Nombre</label>
+          <input
+            type="text"
+            id="firstName"
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="lastName" className="block text-black">Apellido</label>
+          <input
+            type="text"
+            id="lastName"
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="email" className="block text-black">Correo Electrónico</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="password" className="block text-black">Contraseña</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="image" className="block text-black">Imagen</label>
+          <input
+            type="text"
+            id="image"
+            name="image"
+            value={formData.image}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
+          />
+        </div>
+        <button
+          type="submit"
+          className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline-green active:bg-green-700"
+        >
+          Registrarse
+        </button>
+      </form>
+    </div>
+  );
+};
 
-//     const onCropComplete = (crop) => {
-//         setCompletedCrop(crop);
-//     };
-
-//     const getCroppedImage = async (image, crop) => {
-//         if (!crop || !image) {
-//             return null;
-//         }
-
-//         const canvas = document.createElement('canvas');
-//         const scaleX = image.naturalWidth / image.width;
-//         const scaleY = image.naturalHeight / image.height;
-//         canvas.width = crop.width;
-//         canvas.height = crop.height;
-//         const ctx = canvas.getContext('2d');
-
-//         ctx.drawImage(
-//             image,
-//             crop.x * scaleX,
-//             crop.y * scaleY,
-//             crop.width * scaleX,
-//             crop.height * scaleY,
-//             0,
-//             0,
-//             crop.width,
-//             crop.height
-//         );
-
-//         return new Promise((resolve, reject) => {
-//             canvas.toBlob((blob) => {
-//                 if (!blob) {
-//                     reject(new Error('Canvas is empty'));
-//                     return;
-//                 }
-//                 const fileUrl = URL.createObjectURL(blob);
-//                 resolve(fileUrl);
-//             }, 'image/jpeg');
-//         });
-//     };
-
-//     const onRegister = async (e) => {
-//         e.preventDefault();
-
-//         const croppedImageUrl = await getCroppedImage(imagePreview, completedCrop);
-
-//         navigate('/dashboard', {
-//             replace: true,
-//             state: {
-//                 logged: true,
-//                 name,
-//                 image: croppedImageUrl, 
-//             },
-//         });
-
-//         onResetForm();
-//         setImage(null);
-//         setImagePreview(null);
-//         setCompletedCrop(null);
-//     };
-
-//     return (
-//         <div className='wrapper'>
-//             <form onSubmit={onRegister}>
-//                 <h1>Registrarse</h1>
-
-//                 <div className='input-group'>
-//                     <input
-//                         type='text'
-//                         name='name'
-//                         id='name'
-//                         value={name}
-//                         onChange={onInputChange}
-//                         required
-//                         autoComplete='off'
-//                     />
-//                     <label htmlFor='name'>Nombre:</label>
-//                 </div>
-
-//                 <div className='input-group'>
-//                     <input
-//                         type='text'
-//                         name='lastname'
-//                         id='lastname'
-//                         value={lastname}
-//                         onChange={onInputChange}
-//                         required
-//                         autoComplete='off'
-//                     />
-//                     <label htmlFor='lastname'>Apellido:</label>
-//                 </div>
-
-//                 <div className='input-group'>
-//                     <input
-//                         type='email'
-//                         name='email'
-//                         id='email'
-//                         value={email}
-//                         onChange={onInputChange}
-//                         required
-//                         autoComplete='off'
-//                     />
-//                     <label htmlFor='email'>Email:</label>
-//                 </div>
-
-//                 <div className='input-group'>
-//                     <input
-//                         type='password'
-//                         name='password'
-//                         id='password'
-//                         value={password}
-//                         onChange={onInputChange}
-//                         required
-//                         autoComplete='off'
-//                     />
-//                     <label htmlFor='password'>Contraseña:</label>
-//                 </div>
-
-//                 <div className='input-group'>
-//                     <input
-//                         type='file'
-//                         name='image'
-//                         id='image'
-//                         accept='image/*'
-//                         onChange={onImageChange}
-//                         required
-//                     />
-//                     <label htmlFor='image'>Imagen:</label>
-//                 </div>
-
-//                 {imagePreview && (
-//                     <ReactCrop
-//                         src={imagePreview}
-//                         crop={crop}
-//                         onImageLoaded={onImageLoaded}
-//                         onComplete={onCropComplete}
-//                         onChange={(newCrop) => setCrop(newCrop)}
-//                     />
-//                 )}
-
-//                 <button type='submit'>Registrarse</button>
-//             </form>
-//         </div>
-//     );
-// };
+export default RegisterPage;
