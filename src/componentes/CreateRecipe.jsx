@@ -1,49 +1,55 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const RecipeForm = () => {
   const [formData, setFormData] = useState({
     title: '',
-    description: [],
-    ingredients: [],
+    description: '',
+    ingredients: '',
     category: '',
     img: '',
     userId: 1, // Usar mientras no haya inicio de sesión de usuarios
   });
 
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    if (name === 'description' || name === 'ingredients') {
-      const arrayValue = value.split('/');
-      setFormData({ ...formData, [name]: arrayValue });
-    } else {
-      setFormData({ ...formData, [name]: value });
-    }
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const dataToSend = {
+      ...formData,
+      description: formData.description.split('/'),
+      ingredients: formData.ingredients.split('/'),
+    };
+
+    console.log('Datos a enviar:', dataToSend); // Depuración
+
     try {
       const response = await fetch('http://localhost:3306/recipe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(dataToSend),
       });
+
+      console.log('Respuesta del servidor:', response); // Depuración
 
       if (response.status === 201) {
         Swal.fire({
           icon: 'success',
           title: 'Receta creada con éxito',
           showConfirmButton: false,
-          timer: 10000,
+          timer: 2000,
+        }).then(() => {
+          navigate('/recipes');
         });
-        Navigate('/recipes');
       } else {
         Swal.fire({
           icon: 'error',
@@ -53,6 +59,11 @@ const RecipeForm = () => {
       }
     } catch (error) {
       console.error('Error al crear la receta:', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error al crear la receta',
+        text: 'Hubo un problema al crear la receta. Por favor, inténtalo de nuevo.',
+      });
     }
   };
 
@@ -77,7 +88,7 @@ const RecipeForm = () => {
           <textarea
             id="description"
             name="description"
-            value={formData.description.join('/')}
+            value={formData.description}
             onChange={handleChange}
             required
             className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
@@ -89,7 +100,7 @@ const RecipeForm = () => {
             type="text"
             id="ingredients"
             name="ingredients"
-            value={formData.ingredients.join('/')}
+            value={formData.ingredients}
             onChange={handleChange}
             required
             className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
