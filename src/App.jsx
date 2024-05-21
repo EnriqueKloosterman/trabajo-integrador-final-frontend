@@ -10,7 +10,8 @@ import CreateRecipe from './componentes/CreateRecipe';
 import RecipeDetail from "./componentes/RecipeDetail";
 import ArticleDetail from "./componentes/ArticleDetail";
 import CreateArticle from "./componentes/CreateArticle";
-
+import RegisterPage from "./componentes/RegisterPage";
+import LoginPage from "./componentes/LoginPage";
 
 
 
@@ -30,6 +31,9 @@ function App() {
         <Route path="/create-article" element={<CreateArticle />} />
         <Route  path='/contact' element={<Contact />} />
         <Route path="*" element={<NotFound />} />
+        <Route path='/register' element={<RegisterPage />} />
+        <Route path='/login' element={<LoginPage />} />
+
       </Routes>
     </div>
   );

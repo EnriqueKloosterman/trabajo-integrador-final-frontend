@@ -5,7 +5,7 @@ function Article() {
   const [articles, setArticles] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredArticles, setFilteredArticles] = useState([]);
-  const articlesUrl = "http://localhost:3306/articles/";
+  const articlesUrl = "http://localhost:3030/api/v2/articles/articles";
 
   useEffect(() => {
     fetch(articlesUrl)
@@ -47,9 +47,9 @@ function Article() {
             key={i}
             className="bg-white shadow-lg rounded-lg overflow-hidden article-card"
           >
-            <Link to={`/articles/${article.id}`}>
+            <Link to={`/articles/${article.articleId}`}>
               <img
-                src={article.img}
+                src={article.image}
                 alt={article.title}
                 className="w-full h-48 object-cover"
               />

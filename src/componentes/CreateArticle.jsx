@@ -6,9 +6,9 @@ function CreateArticle() {
   const [formData, setFormData] = useState({
     title: "",
     article: [],
-    img: "",
+    image: "",
     category: "", // Cambiar a una cadena para almacenar la categoría seleccionada
-    user_id: 1, // Usar mientras no haya inicio de sesión de usuarios
+    // userId: 1, // Usar mientras no haya inicio de sesión de usuarios
   });
 
   const Navigate = useNavigate();
@@ -21,7 +21,7 @@ function CreateArticle() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3000/api/v1/articles", {
+      const response = await fetch("http://localhost:3030/api/v2/articles/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

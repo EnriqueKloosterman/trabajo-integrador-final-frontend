@@ -6,7 +6,7 @@ function ArticleDetail() {
   const [article, setArticle] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:3306/articles/${id}`)
+    fetch(`http://localhost:3030/api/v2/articles/article/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setArticle(data);
@@ -25,9 +25,10 @@ function ArticleDetail() {
     <div className="bg-gray-100">
       <div className="container mx-auto py-12 px-4">
         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-          <img src={article.img} alt={article.title} className="w-full h-64 object-cover" />
+          <img src={article.image} alt={article.title} className="w-full h-64 object-cover" />
           <div className="p-6">
             <h2 className="text-3xl font-semibold text-purple-800 mb-4">{article.title}</h2>
+            <p className="text-m mb-4 italic">{article.user.userName} {article.user.userLastName} <span className="font-semibold"> {article.user.userEmail}</span></p>
             {article.article.map((paragraph, i) => (
               <p key={i} className="text-gray-800 text-base mb-4">{paragraph}</p>
             ))}

@@ -5,7 +5,7 @@ function Recipe() {
   const [recipes, setRecipes] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const recipesUrl = "http://localhost:3306/recipe";
+  const recipesUrl = "http://localhost:3030/api/v2/recipes/recipes";
 
   useEffect(() => {
     fetch(recipesUrl)
@@ -44,7 +44,7 @@ function Recipe() {
             <Link to={`/recipes/${recipe.id}`} className="block">
               <li className="bg-white shadow-lg rounded-lg overflow-hidden h-full">
                 <img
-                  src={recipe.img}
+                  src={recipe.image}
                   alt={recipe.title}
                   className="w-full h-48 object-cover"
                 />

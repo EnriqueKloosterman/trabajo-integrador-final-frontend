@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import Swal from 'sweetalert2';
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
+    userName: '',
+    userLastName: '',
+    userEmail: '',
+    userPassword: '',
     image: null, // Cambiar a null para manejar archivos
   });
 
@@ -26,7 +26,7 @@ const RegisterPage = () => {
       formDataToSend.append(key, formData[key]);
     }
     try {
-      const response = await fetch('http://localhost:3306/registerpage', {
+      const response = await fetch('http://localhost:3030/api/v2/auth/register', {
         method: 'POST',
         body: formDataToSend,
       });

@@ -18,7 +18,7 @@ function Navbar() {
             <Link to="/contact" className="hover:text-green-300">Contacto</Link>
           </li>
           <li>
-            <Link to="/loginpage" className="hover:text-green-300">Iniciar Sesión</Link>
+            <Link to="/login" className="hover:text-green-300">Iniciar Sesión</Link>
           </li>
         </ul>
       </nav>
