@@ -6,7 +6,7 @@ function RecipeDetail() {
   const [recipe, setRecipe] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:3306/recipe/${id}`)
+    fetch(`http://localhost:3030/api/v2/recipes/recipe/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setRecipe(data);
@@ -25,9 +25,10 @@ function RecipeDetail() {
     <div className="bg-gray-100">
       <div className="container mx-auto py-12 px-4">
         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-          <img src={recipe.img} alt={recipe.title} className="w-full h-64 object-cover" />
+          <img src={recipe.image} alt={recipe.title} className="w-full h-64 object-cover" />
           <div className="p-6">
             <h2 className="text-3xl font-semibold text-green-800 mb-4">{recipe.title}</h2>
+            <p className="text-m mb-4 italic">{recipe.user.userName} {recipe.user.userLastName} <span className="font-semibold"> {recipe.user.userEmail}</span></p>
             <div className="mb-6">
               <h3 className="text-xl font-semibold text-green-700 mb-2">Descripción:</h3>
               {recipe.description.map((paragraph, i) => (

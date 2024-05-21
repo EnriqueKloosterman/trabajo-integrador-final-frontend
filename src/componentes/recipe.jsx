@@ -41,7 +41,7 @@ function Recipe() {
       <ul className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         {searchResults.map((recipe, i) => (
           <div className="recipe-card" key={i}>
-            <Link to={`/recipes/${recipe.id}`} className="block">
+            <Link to={`/recipes/${recipe.recipeId}`} className="block">
               <li className="bg-white shadow-lg rounded-lg overflow-hidden h-full">
                 <img
                   src={recipe.image}
