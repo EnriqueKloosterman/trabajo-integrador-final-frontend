@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
@@ -8,8 +8,8 @@ const RecipeForm = () => {
     description: '',
     ingredients: '',
     category: '',
-    img: '',
-    userId: 1, // Usar mientras no haya inicio de sesión de usuarios
+    image: '',
+  
   });
 
   const navigate = useNavigate();
@@ -24,14 +24,13 @@ const RecipeForm = () => {
 
     const dataToSend = {
       ...formData,
-      description: formData.description.split('/'),
-      ingredients: formData.ingredients.split('/'),
+    //   description: formData.description.split('/'),
+    //   ingredients: formData.ingredients.split('/'),
     };
 
-    console.log('Datos a enviar:', dataToSend); // Depuración
-
+    // console.log('Datos a enviar:', dataToSend); 
     try {
-      const response = await fetch('http://localhost:3306/recipe', {
+      const response = await fetch('http://localhost:3030/api/v2/recipes/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -39,7 +38,7 @@ const RecipeForm = () => {
         body: JSON.stringify(dataToSend),
       });
 
-      console.log('Respuesta del servidor:', response); // Depuración
+      console.log('Respuesta del servidor:', response); 
 
       if (response.status === 201) {
         Swal.fire({
@@ -84,7 +83,7 @@ const RecipeForm = () => {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="description" className="block text-black">Descripción (Agregar / al final de cada párrafo)</label>
+          <label htmlFor="description" className="block text-black">Descripción (Agregar // al final de cada párrafo)</label>
           <textarea
             id="description"
             name="description"
@@ -95,7 +94,7 @@ const RecipeForm = () => {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="ingredients" className="block text-black">Ingredientes (Agregar / al final de cada ingrediente para separarlos)</label>
+          <label htmlFor="ingredients" className="block text-black">Ingredientes (Agregar // al final de cada ingrediente para separarlos)</label>
           <input
             type="text"
             id="ingredients"
