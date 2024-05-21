@@ -7,23 +7,28 @@ const RegisterPage = () => {
     lastName: '',
     email: '',
     password: '',
-    image: '',
+    image: null, // Cambiar a null para manejar archivos
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    const { name, value, files } = e.target;
+    if (name === 'image') {
+      setFormData({ ...formData, [name]: files[0] });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const formDataToSend = new FormData();
+    for (const key in formData) {
+      formDataToSend.append(key, formData[key]);
+    }
     try {
       const response = await fetch('http://localhost:3306/registerpage', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+        body: formDataToSend,
       });
 
       if (response.status === 201) {
@@ -100,10 +105,9 @@ const RegisterPage = () => {
         <div className="mb-4">
           <label htmlFor="image" className="block text-black">Imagen</label>
           <input
-            type="text"
+            type="file"
             id="image"
             name="image"
-            value={formData.image}
             onChange={handleChange}
             required
             className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
