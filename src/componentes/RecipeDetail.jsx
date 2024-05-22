@@ -27,19 +27,25 @@ function RecipeDetail() {
         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
           <img src={recipe.image} alt={recipe.title} className="w-full h-64 object-cover" />
           <div className="p-6">
-            <h2 className="text-3xl font-semibold text-green-800 mb-4">{recipe.title}</h2>
+            <h2 className="text-4xl font-semibold text-green-800 mb-4">{recipe.title}</h2>
             <p className="text-m mb-4 italic">{recipe.user.userName} {recipe.user.userLastName} <span className="font-semibold"> {recipe.user.userEmail}</span></p>
             <div className="mb-6">
-              <h3 className="text-xl font-semibold text-green-700 mb-2">Descripción:</h3>
+              <h3 className="text-2xl font-semibold text-green-700 mb-2">Descripción:</h3>
               {recipe.description.map((paragraph, i) => (
                 <p key={i} className="text-gray-800 text-base">{paragraph}</p>
               ))}
             </div>
             <div className="mb-6">
-              <h3 className="text-xl font-semibold text-green-700 mb-2">Ingredientes:</h3>
+              <h3 className="text-2xl font-semibold text-green-700 mb-4">Ingredientes:</h3>
               <ul>
                 {recipe.ingredients.map((ingredient, i) => (
-                  <li key={i} className="text-gray-800 text-base mb-2">{ingredient}</li>
+                  <li key={i} className="text-gray-800 text-base mb-4">{ingredient}</li>
+                ))}
+              </ul>
+              <ul>
+              <h3 className="text-2xl font-semibold text-green-700 mb-4">Instrucciones:</h3>
+                {recipe.instructions.map((recipe, i) => (
+                  <li key={i} className="text-gray-800 text-base mb-2">{recipe}</li>
                 ))}
               </ul>
             </div>
