@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
-
+import logo from '../assets/logo.png';
 function Navbar() {
   return (
     <div className="bg-gradient-to-r from-green-700 via-green-600 to-green-500 py-4 mt-3 rounded-md">
       <nav className="container mx-auto flex justify-between items-center px-4">
+        <img src={logo} alt="Logo Travesuras en la cocina" style={{maxWidth: '100px', maxHeight: '100px'}}/>
         <Link to="/" className="text-4xl font-extrabold text-white text-opacity-90 hover:text-opacity-100 transition-colors duration-300 shadow-lg">
           Aventuras en la cocina
         </Link>
