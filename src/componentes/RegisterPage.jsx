@@ -55,48 +55,48 @@ const RegisterPage = () => {
       <h2 className="text-2xl font-bold mb-4 text-black">Registrarse</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label htmlFor="firstName" className="block text-black">Nombre</label>
+          <label htmlFor="userName" className="block text-black">Nombre</label>
           <input
             type="text"
-            id="firstName"
-            name="firstName"
-            value={formData.firstName}
+            id="userName"
+            name="userName"
+            value={formData.userName}
             onChange={handleChange}
             required
             className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="lastName" className="block text-black">Apellido</label>
+          <label htmlFor="userLastName" className="block text-black">Apellido</label>
           <input
             type="text"
-            id="lastName"
-            name="lastName"
-            value={formData.lastName}
+            id="userLastName"
+            name="userLastName"
+            value={formData.userLastName}
             onChange={handleChange}
             required
             className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="email" className="block text-black">Correo Electrónico</label>
+          <label htmlFor="userEmail" className="block text-black">Correo Electrónico</label>
           <input
             type="email"
-            id="email"
-            name="email"
-            value={formData.email}
+            id="userEmail"
+            name="userEmail"
+            value={formData.userEmail}
             onChange={handleChange}
             required
             className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="password" className="block text-black">Contraseña</label>
+          <label htmlFor="userPassword" className="block text-black">Contraseña</label>
           <input
             type="password"
-            id="password"
-            name="password"
-            value={formData.password}
+            id="userPassword"
+            name="userPassword"
+            value={formData.userPassword}
             onChange={handleChange}
             required
             className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 function Comments() {
   const [comments, setComments] = useState([]);
-  const commentsUrl = "http://localhost:3306/comments";
+  const commentsUrl = "http://localhost:3030/comment";
 
   useEffect(() => {
     fetch(commentsUrl)

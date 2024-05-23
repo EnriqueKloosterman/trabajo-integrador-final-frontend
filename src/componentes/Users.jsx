@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 function Users() {
   const [users, setUsers] = useState([]);
-  const usersUrl = "http://localhost:3306/users";
+  const usersUrl = "http://localhost:3030/users/users";
 
   useEffect(() => {
     fetch(usersUrl)
@@ -19,8 +19,8 @@ function Users() {
       <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {users.map((user, i) => (
           <li key={i} className="bg-white shadow-lg rounded-lg p-4">
-            <h2 className="text-xl font-semibold text-green-900 mb-2">{user.name} {user.lastName}</h2>
-            <p className="text-lg text-green-700 mb-2">{user.email}</p>
+            <h2 className="text-xl font-semibold text-green-900 mb-2">{user.userName} {user.userLastName}</h2>
+            <p className="text-lg text-green-700 mb-2">{user.userEmail}</p>
           </li>
         ))}
       </ul>
