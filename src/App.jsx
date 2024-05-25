@@ -33,6 +33,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
         <Route path='/register' element={<RegisterPage />} />
         <Route path='/login' element={<LoginPage />} />
+        <Route path='/users' element={<Users />} />
 
       </Routes>
     </div>

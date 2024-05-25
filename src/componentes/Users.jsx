@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 function Users() {
   const [users, setUsers] = useState([]);
-  const usersUrl = "http://localhost:3030/users/users";
+  const usersUrl = "http://localhost:3030/api/v2/users/users";
 
   useEffect(() => {
     fetch(usersUrl)
