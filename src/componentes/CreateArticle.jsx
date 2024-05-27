@@ -1,17 +1,31 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 function CreateArticle() {
   const [formData, setFormData] = useState({
     title: "",
-    article: [],
+    article: "",
     image: "",
-    category: "", // Cambiar a una cadena para almacenar la categoría seleccionada
-    // userId: 1, // Usar mientras no haya inicio de sesión de usuarios
+    category: "",
   });
 
-  const Navigate = useNavigate();
+  const [categories, setCategories] = useState([]); 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchTags = async () => {
+      try {
+        const response = await fetch("http://localhost:3030/api/v2/tag/tags"); 
+        const data = await response.json();
+        setCategories(data);
+      } catch (error) {
+        console.error("Error al obtener las categorías:", error);
+      }
+    };
+
+    fetchTags();
+  }, []); 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,9 +47,11 @@ function CreateArticle() {
           icon: "success",
           title: "Artículo creado con éxito",
           showConfirmButton: false,
-          timer: 7000,
+          timer: 2000,
         });
-        Navigate("/");
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
       } else {
         Swal.fire({
           icon: "error",
@@ -44,6 +60,11 @@ function CreateArticle() {
         });
       }
     } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Error al crear el artículo",
+        text: "Hubo un problema al crear el artículo. Por favor, inténtalo de nuevo.",
+      });
       console.error("Error al crear el artículo:", error);
     }
   };
@@ -69,42 +90,37 @@ function CreateArticle() {
           <textarea
             id="article"
             name="article"
-            value={formData.article.join("/")}
+            value={formData.article}
             onChange={handleChange}
             required
             className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="img" className="block text-black">URL de la imagen</label>
+          <label htmlFor="image" className="block text-black">Imagen</label>
           <input
-            type="text"
-            id="img"
-            name="img"
-            value={formData.img}
+            type="file"
+            id="image"
+            name="image"
             onChange={handleChange}
             required
             className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="category" className="block text-black">Categoría</label>
+          <label htmlFor="tag" className="block text-black">Categoría</label>
           <select
-            id="category"
-            name="category"
-            value={formData.category}
+            id="tag"
+            name="tag"
+            value={formData.tag}
             onChange={handleChange}
             required
             className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
           >
             <option value="">Selecciona una categoría</option>
-            <option value="Carnes Blancas">Carnes Blancas</option>
-            <option value="Carnes Rojas">Carnes Rojas</option>
-            <option value="Pescados y Mariscos">Pescados y Mariscos</option>
-            <option value="Vegetariana">Vegetariana</option>
-            <option value="Vegana">Vegana</option>
-            <option value="Postres">Postres</option>
-            <option value="Bebidas">Bebidas</option>
+            {categories.map((tag) => (
+              <option key={tag.id} value={tag.tag}>{tag.tag}</option>
+            ))}
           </select>
         </div>
         <button

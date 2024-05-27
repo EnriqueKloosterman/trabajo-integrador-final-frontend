@@ -31,7 +31,7 @@ const UserProvider = ({ children }) => {
   );
 };
 
-// Validación de propiedades
+//* Validación de propiedades
 UserProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };

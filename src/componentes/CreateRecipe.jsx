@@ -128,13 +128,24 @@ const RecipeForm = () => {
             <option value="otros">Otros</option>
           </select>
         </div>
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <label htmlFor="img" className="block text-black">URL de la imagen</label>
           <input
             type="text"
             id="img"
             name="img"
             value={formData.img}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
+          />
+        </div> */}
+                <div className="mb-4">
+          <label htmlFor="image" className="block text-black">Imagen</label>
+          <input
+            type="file"
+            id="image"
+            name="image"
             onChange={handleChange}
             required
             className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
