@@ -121,7 +121,7 @@ The application uses SweetAlert for enhanced alert messages. To use SweetAlert, 
     return (
         <button onClick={handleSubmit}>Submit Recipe</button>
     );
-  ```
+    ```
 
 
 ## License
