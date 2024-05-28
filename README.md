@@ -88,7 +88,7 @@ The application uses Tailwind CSS for styling. You can customize the Tailwind co
 **SweetAlert**
 The application uses SweetAlert for enhanced alert messages. To use SweetAlert, follow these steps:
 
-    1. **Install SweetAlert**
+1. **Install SweetAlert**
     
     Using npm 
     ```
@@ -100,12 +100,12 @@ The application uses SweetAlert for enhanced alert messages. To use SweetAlert, 
     yarn add sweetalert2
     ```
 
-    2. **Import SweetAlert in your component
+2. **Import SweetAlert in your component**
      ```
      import Swal from 'sweetalert2';
     ```
 
-    3. **Use SweetAlert in your component:**
+3. **Use SweetAlert in your component:**
     Here is an example of how to use SweetAlert for a success message:
 
     ```
