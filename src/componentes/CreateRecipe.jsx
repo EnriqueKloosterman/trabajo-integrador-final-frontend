@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
@@ -7,12 +7,26 @@ const RecipeForm = () => {
     title: '',
     description: '',
     ingredients: '',
+    instructions: '',
     category: '',
     image: '',
   
   });
-
+  const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch("http://localhost:3030/api/v2/categories/categories");
+        const data = await response.json();
+        setCategories(data);
+      } catch (error) {
+        console.error('Error al obtener las categorías:', error);
+      }
+    };
+    fetchCategories();
+  },[])
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,24 +35,14 @@ const RecipeForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const dataToSend = {
-      ...formData,
-    //   description: formData.description.split('/'),
-    //   ingredients: formData.ingredients.split('/'),
-    };
-
-    // console.log('Datos a enviar:', dataToSend); 
     try {
       const response = await fetch('http://localhost:3030/api/v2/recipes/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(dataToSend),
-      });
-
-      console.log('Respuesta del servidor:', response); 
+        body: JSON.stringify(formData),
+      }); 
 
       if (response.status === 201) {
         Swal.fire({
@@ -46,9 +50,10 @@ const RecipeForm = () => {
           title: 'Receta creada con éxito',
           showConfirmButton: false,
           timer: 2000,
-        }).then(() => {
-          navigate('/recipes');
         });
+        setTimeout(() => {
+          navigate('/recipes');
+        })
       } else {
         Swal.fire({
           icon: 'error',
@@ -57,12 +62,12 @@ const RecipeForm = () => {
         });
       }
     } catch (error) {
-      console.error('Error al crear la receta:', error);
       Swal.fire({
         icon: 'error',
         title: 'Error al crear la receta',
         text: 'Hubo un problema al crear la receta. Por favor, inténtalo de nuevo.',
       });
+    console.error('Error al crear la receta:', error);
     }
   };
 
@@ -104,6 +109,17 @@ const RecipeForm = () => {
             required
             className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
           />
+        <div className="mb-4">
+          <label htmlFor="instructions" className="block text-black">Instrucciones (Agregar // al final de cada párrafo)</label>
+          <textarea
+            id="instructions"
+            name="instructions"
+            value={formData.instructions}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
+          />
+        </div>
         </div>
         <div className="mb-4">
           <label htmlFor="category" className="block text-black">Categoría</label>
@@ -112,35 +128,16 @@ const RecipeForm = () => {
             name="category"
             value={formData.category}
             onChange={handleChange}
-            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
             required
+            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
           >
             <option value="">Selecciona una categoría</option>
-            <option value="carnes blancas">Carnes Blancas</option>
-            <option value="carnes rojas">Carnes Rojas</option>
-            <option value="pescados">Pescados</option>
-            <option value="vegetariana">Vegetariana</option>
-            <option value="vegana">Vegana</option>
-            <option value="postres">Postres</option>
-            <option value="ensaladas">Ensaladas</option>
-            <option value="sopas">Sopas</option>
-            <option value="aperitivos">Aperitivos</option>
-            <option value="otros">Otros</option>
+            {categories.map((category) => (
+              <option key={category.id} value={category.categoryId}>{category.category} </option> 
+            ))}
           </select>
         </div>
-        {/* <div className="mb-4">
-          <label htmlFor="img" className="block text-black">URL de la imagen</label>
-          <input
-            type="text"
-            id="img"
-            name="img"
-            value={formData.img}
-            onChange={handleChange}
-            required
-            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
-          />
-        </div> */}
-                <div className="mb-4">
+        <div className="mb-4">
           <label htmlFor="image" className="block text-black">Imagen</label>
           <input
             type="file"

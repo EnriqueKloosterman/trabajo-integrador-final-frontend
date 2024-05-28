@@ -7,7 +7,7 @@ function CreateArticle() {
     title: "",
     article: "",
     image: "",
-    category: "",
+    tag: "",
   });
 
   const [categories, setCategories] = useState([]); 
@@ -119,7 +119,7 @@ function CreateArticle() {
           >
             <option value="">Selecciona una categoría</option>
             {categories.map((tag) => (
-              <option key={tag.id} value={tag.tag}>{tag.tag}</option>
+              <option key={tag.id} value={tag.tagId}>{tag.tag}</option>
             ))}
           </select>
         </div>
