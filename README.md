@@ -110,8 +110,6 @@ The application uses SweetAlert for enhanced alert messages. To use SweetAlert, 
 
     ```
     const handleSubmit = () => {
-  // Your form submission logic here
-
     	Swal.fire({
             title: 'Success!',
             text: 'Your recipe has been submitted.',
