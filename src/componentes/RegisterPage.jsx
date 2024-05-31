@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import Swal from 'sweetalert2';
 
 const RegisterPage = () => {
@@ -7,7 +7,7 @@ const RegisterPage = () => {
     userLastName: '',
     userEmail: '',
     userPassword: '',
-    image: null, // Cambiar a null para manejar archivos
+    image: null,
   });
 
   const handleChange = (e) => {
@@ -34,7 +34,7 @@ const RegisterPage = () => {
       if (response.status === 201) {
         Swal.fire({
           icon: 'success',
-          title: 'Registro exitoso',
+          title: `Registro exitoso, ¡Bienvenido ${formData.userName}!`,
           showConfirmButton: false,
           timer: 2000,
         });
@@ -47,6 +47,11 @@ const RegisterPage = () => {
       }
     } catch (error) {
       console.error('Error al registrarse:', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error al registrarse',
+        text: 'Hubo un problema al crear tu cuenta. Por favor, inténtalo de nuevo.',
+      });
     }
   };
 
@@ -125,3 +130,4 @@ const RegisterPage = () => {
 };
 
 export default RegisterPage;
+
