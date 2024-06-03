@@ -12,6 +12,7 @@ import ArticleDetail from "./componentes/ArticleDetail";
 import CreateArticle from "./componentes/CreateArticle";
 import RegisterPage from "./componentes/RegisterPage";
 import LoginPage from "./componentes/LoginPage";
+import UserProfile from "./componentes/UserProfile"; 
 
 
 
@@ -34,6 +35,7 @@ function App() {
         <Route path='/register' element={<RegisterPage />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/users' element={<Users />} />
+        <Route path='/profile' element={<UserProfile />} />
 
       </Routes>
     </div>
