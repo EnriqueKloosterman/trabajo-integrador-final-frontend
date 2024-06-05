@@ -1,30 +1,78 @@
-import { Link } from 'react-router-dom';
-import logo from '../assets/logo.png';
-function Navbar() {
+import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import { UserContext } from "./UserContext";
+import logo from "../assets/logo.png";
+
+const Navbar = () => {
+  const { user, handleLogOut } = useContext(UserContext);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
   return (
-    <div className="bg-gradient-to-r from-green-700 via-green-600 to-green-500 py-4 mt-3 rounded-md">
-      <nav className="container mx-auto flex justify-between items-center px-4">
-        <img src={logo} alt="Logo Travesuras en la cocina" style={{maxWidth: '100px', maxHeight: '100px'}}/>
-        <Link to="/" className="text-4xl font-extrabold text-white text-opacity-90 hover:text-opacity-100 transition-colors duration-300 shadow-lg">
-          Aventuras en la cocina
+    <nav className="bg-green-500 p-4 flex items-center justify-between">
+      {/* Logo */}
+      <div className="flex-shrink-0">
+        <Link to="/">
+          <img src={logo} alt="Logo" className="h-16" />
         </Link>
-        <ul className="flex space-x-6 text-lg font-semibold text-white">
-          <li>
-            <Link to="/" className="hover:text-green-300">Inicio</Link>
-          </li>
-          <li>
-            <Link to="/recipes" className="hover:text-green-300">Recetas</Link>
-          </li>
-          <li>
-            <Link to="/contact" className="hover:text-green-300">Contacto</Link>
-          </li>
-          <li>
-            <Link to="/login" className="hover:text-green-300">Iniciar Sesión</Link>
-          </li>
-        </ul>
-      </nav>
-    </div>
+      </div>
+
+      {/* Título de la página */}
+      <div className="flex-grow text-center">
+        <Link to="/" className="text-white text-4xl">
+          Aventuras en la Cocina
+        </Link>
+      </div>
+
+      {/* Links / Avatar del usuario */}
+      <div className="flex-shrink-0 relative">
+        {!user ? (
+          <div className="flex space-x-4">
+            <Link to="/login" className="text-white hover:text-gray-300" >
+              Login
+            </Link>
+            <Link to="/register" className="text-white hover:text-gray-300">
+              Registro
+            </Link>
+          </div>
+        ) : (
+          <div className="relative">
+            <div
+              className="flex items-center space-x-2 cursor-pointer"
+              onClick={toggleDropdown}
+            >
+              <img
+                src={user.image}
+                alt="Avatar"
+                className="h-10 w-10 rounded-full object-cover"
+              />
+              <span className="text-white">{user.userName}</span>
+            </div>
+            {dropdownOpen && (
+              <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1">
+                <Link
+                  to="/profile"
+                  className="block px-4 py-2 text-gray-800 hover:bg-gray-100" onClick={toggleDropdown}
+                >
+                  Perfil
+                </Link>
+                <button
+                  onClick={handleLogOut}
+                  className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100"
+                >
+                  logout
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    </nav>
   );
-}
+};
 
 export default Navbar;
+

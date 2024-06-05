@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { UserContext } from './UserContext';
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +9,7 @@ const LoginPage = () => {
     userPassword: '',
   });
 
+  const { handleLogin } = useContext(UserContext)
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -17,7 +19,7 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Submitting form with data:', formData);  // Log the form data
+    console.log('Submitting form with data:', formData); 
     try {
       const response = await fetch('http://localhost:3030/api/v2/auth/login', {
         method: 'POST',
@@ -29,8 +31,8 @@ const LoginPage = () => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log('Response data:', data);  // Log the response data
-        localStorage.setItem('token', data.token);
+        console.log('Response data:', data); 
+        handleLogin(data, data.token);
         Swal.fire({
           icon: 'success',
           title: 'Inicio de sesión exitoso',
