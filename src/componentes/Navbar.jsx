@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "./UserContext";
 import logo from "../assets/logo.png";
@@ -11,6 +11,10 @@ const Navbar = () => {
     setDropdownOpen(!dropdownOpen);
   };
 
+  useEffect(() => {
+    setDropdownOpen(false);
+  }, [user]);
+
   return (
     <nav className="bg-green-500 p-4 flex items-center justify-between">
       {/* Logo */}
@@ -20,22 +24,21 @@ const Navbar = () => {
         </Link>
       </div>
 
-      {/* Título de la página */}
+
       <div className="flex-grow text-center">
         <Link to="/" className="text-white text-4xl">
           Aventuras en la Cocina
         </Link>
       </div>
 
-      {/* Links / Avatar del usuario */}
       <div className="flex-shrink-0 relative">
         {!user ? (
           <div className="flex space-x-4">
             <Link to="/login" className="text-white hover:text-gray-300" >
-              Login
+              Ingresar
             </Link>
             <Link to="/register" className="text-white hover:text-gray-300">
-              Registro
+              Crear Cuenta
             </Link>
           </div>
         ) : (
