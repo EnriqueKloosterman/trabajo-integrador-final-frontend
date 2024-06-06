@@ -1,5 +1,6 @@
 import  { useContext, useEffect, useState } from 'react';
 import { UserContext } from './UserContext';
+import { Link } from 'react-router-dom';
 
 const UserProfile = () => {
   const { user } = useContext(UserContext);
@@ -44,10 +45,10 @@ const UserProfile = () => {
         {articles.length > 0 ? (
           <div className="space-y-4">
             {articles.map(article => (
-              <div key={article.articleId} className="border p-4 rounded">
-              <img src={article.image} alt="imagen" className="h-16 w-16 object-cover rounded mb-2" />
-              <h2 className="text-lg font-bold">{article.title}</h2>
-            </div>
+                <Link to={`/articles/${article.articleId}`} key={article.articleId} className="border p-4 rounded">
+                  <img src={article.image} alt="imagen" className="h-16 w-16 object-cover rounded mb-2" />
+                  <h2 className="text-lg font-bold">{article.title}</h2>
+                </Link>
             ))}
           </div>
         ) : (
@@ -59,10 +60,10 @@ const UserProfile = () => {
         {recipes.length > 0 ? (
           <div className="space-y-4">
             {recipes.map(recipe => (
-              <div key={recipe.recipeId} className="border p-4 rounded">
+              <Link to={`/recipes/${recipe.recipeId}`} key={recipe.recipeId} className="border p-4 rounded">
               <img src={recipe.image} alt="imagen" className="h-16 w-16 object-cover rounded mb-2" />
               <h2 className="text-2xl font-bold">{recipe.title}</h2>
-            </div>
+            </Link>
             ))}
           </div>
         ) : (

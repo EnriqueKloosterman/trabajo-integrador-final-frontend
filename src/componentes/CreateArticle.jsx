@@ -1,22 +1,25 @@
-import { useState, useEffect } from "react";
+
+import { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { UserContext } from "./UserContext";
 
 function CreateArticle() {
+  const { user } = useContext(UserContext);
   const [formData, setFormData] = useState({
     title: "",
     article: "",
-    image: "",
+    image: null,
     tag: "",
   });
 
-  const [categories, setCategories] = useState([]); 
+  const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchTags = async () => {
       try {
-        const response = await fetch("http://localhost:3030/api/v2/tag/tags"); 
+        const response = await fetch("http://localhost:3030/api/v2/tag/tags");
         const data = await response.json();
         setCategories(data);
       } catch (error) {
@@ -25,23 +28,44 @@ function CreateArticle() {
     };
 
     fetchTags();
-  }, []); 
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+  const handleFileChange = (e) => {
+    const { files } = e.target;
+    setFormData({ ...formData, image: files[0] });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!user) {
+      Swal.fire({
+        icon: "error",
+        title: "Error al crear el artículo",
+        text: "Debes iniciar sesión para crear un artículo.",
+      });
+      return;
+    }
+
+    const data = new FormData();
+    data.append("title", formData.title);
+    data.append("article", formData.article);
+    data.append("image", formData.image);
+    data.append("userId", user.userId);
+
     try {
       const response = await fetch("http://localhost:3030/api/v2/articles/register", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem('token')}`
         },
-        body: JSON.stringify(formData),
+        body: data,
       });
+
       if (response.status === 201) {
         Swal.fire({
           icon: "success",
@@ -53,10 +77,12 @@ function CreateArticle() {
           navigate("/");
         }, 2000);
       } else {
+        const errorData = await response.json();
+        console.error("Error response from server:", errorData);
         Swal.fire({
           icon: "error",
           title: "Error al crear el artículo",
-          text: "Hubo un problema al crear el artículo. Por favor, inténtalo de nuevo.",
+          text: `Hubo un problema al crear el artículo: ${errorData.message || 'Error desconocido'}`,
         });
       }
     } catch (error) {
@@ -102,7 +128,7 @@ function CreateArticle() {
             type="file"
             id="image"
             name="image"
-            onChange={handleChange}
+            onChange={handleFileChange}
             required
             className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
           />
@@ -119,7 +145,7 @@ function CreateArticle() {
           >
             <option value="">Selecciona una categoría</option>
             {categories.map((tag) => (
-              <option key={tag.id} value={tag.tagId}>{tag.tag}</option>
+              <option key={tag.tagId} value={tag.tagId}>{tag.tag}</option>
             ))}
           </select>
         </div>
@@ -135,3 +161,4 @@ function CreateArticle() {
 }
 
 export default CreateArticle;
+
