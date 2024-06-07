@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import RecipeCarousel from "./RecipeCarousel";
 
 function Article() {
   const [articles, setArticles] = useState([]);
@@ -26,6 +27,7 @@ function Article() {
 
   return (
     <div className="container mx-auto p-4">
+      <RecipeCarousel />
       <div className="mb-4 flex items-center">
         <input
           type="text"

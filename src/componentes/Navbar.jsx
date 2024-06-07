@@ -45,7 +45,7 @@ const Navbar = () => {
                 alt="Avatar"
                 className="h-10 w-10 rounded-full object-cover"
               />
-              <span className="text-white">{user.userName}</span>
+              <span className="text-white">{user.userName} {user.userLastName}</span>
             </div>
             {dropdownOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1">
