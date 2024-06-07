@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Article from "./componentes/article";
-import Coments from "./componentes/coments";
+import Comments from "./componentes/Comments"
 import Recipe from "./componentes/recipe";
 import Users from "./componentes/Users";
 import Navbar from "./componentes/Navbar";
@@ -16,13 +16,14 @@ import UserProfile from "./componentes/UserProfile";
 
 
 
+
 function App() {
   return (
     <div className="container px-3 bg-slate-100 mx-auto">
       <Navbar />
       <Routes>
-        <Route path="/coments" element={<Coments />} />
-        <Route path="/coments" element={<Coments />} />
+        {/* <Route path="/coments" element={<Coments />} />
+        <Route path="/coments" element={<Coments />} /> */}
         <Route path="/recipes" element={<Recipe />} />
         <Route path="recipes/:id" element={<RecipeDetail />} />
         <Route path="/create-recipe" element={<CreateRecipe />} />
@@ -36,6 +37,7 @@ function App() {
         <Route path='/login' element={<LoginPage />} />
         <Route path='/users' element={<Users />} />
         <Route path='/profile' element={<UserProfile />} />
+        <Route path='/comments' element={<Comments />} />
 
       </Routes>
     </div>
