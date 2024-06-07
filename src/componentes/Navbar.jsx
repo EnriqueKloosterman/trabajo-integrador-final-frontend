@@ -2,19 +2,15 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "./UserContext";
 import logo from "../assets/logo.png";
-
 const Navbar = () => {
   const { user, handleLogOut } = useContext(UserContext);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
-
   useEffect(() => {
     setDropdownOpen(false);
   }, [user]);
-
   return (
     <nav className="bg-green-500 p-4 flex items-center justify-between">
       {/* Logo */}
@@ -23,18 +19,20 @@ const Navbar = () => {
           <img src={logo} alt="Logo" className="h-16" />
         </Link>
       </div>
-
-
       <div className="flex-grow text-center">
         <Link to="/" className="text-white text-4xl">
           Aventuras en la Cocina
         </Link>
       </div>
-
+      <div className="flex space-x-4">
+        <Link to="/recipes" className="text-white hover:text-gray-300">
+          Ver Recetas
+        </Link>
+      </div>
       <div className="flex-shrink-0 relative">
         {!user ? (
           <div className="flex space-x-4">
-            <Link to="/login" className="text-white hover:text-gray-300" >
+            <Link to="/login" className="text-white hover:text-gray-300">
               Ingresar
             </Link>
             <Link to="/register" className="text-white hover:text-gray-300">
@@ -58,7 +56,8 @@ const Navbar = () => {
               <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1">
                 <Link
                   to="/profile"
-                  className="block px-4 py-2 text-gray-800 hover:bg-gray-100" onClick={toggleDropdown}
+                  className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+                  onClick={toggleDropdown}
                 >
                   Perfil
                 </Link>
@@ -66,7 +65,7 @@ const Navbar = () => {
                   onClick={handleLogOut}
                   className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100"
                 >
-                  logout
+                  Logout
                 </button>
               </div>
             )}
@@ -76,6 +75,5 @@ const Navbar = () => {
     </nav>
   );
 };
-
 export default Navbar;
 
