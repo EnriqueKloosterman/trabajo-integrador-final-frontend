@@ -24,11 +24,6 @@ const Navbar = () => {
           Aventuras en la Cocina
         </Link>
       </div>
-      <div className="flex space-x-4">
-        <Link to="/recipes" className="text-white hover:text-gray-300">
-          Ver Recetas
-        </Link>
-      </div>
       <div className="flex-shrink-0 relative">
         {!user ? (
           <div className="flex space-x-4">
