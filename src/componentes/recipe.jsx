@@ -30,21 +30,21 @@ function Recipe() {
           placeholder="Buscar recetas..."
           value={searchTerm}
           onChange={handleSearchChange}
-          className="px-4 py-2 border border-gray-300 rounded-lg w-full focus:outline-none focus:border-blue-500"
+          className="px-4 py-2 border border-gray-300 rounded-lg w-full focus:outline-none focus:border-blue-500 transition duration-200"
         />
       </div>
       <ul className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         {searchResults.map((recipe, i) => (
           <div className="recipe-card" key={i}>
-            <Link to={`/recipes/${recipe.recipeId}`} className="block">
-              <li className="bg-white shadow-lg rounded-lg overflow-hidden h-full transition transform hover:scale-105 duration-200 ease-in-out">
+            <Link to={`/recipes/${recipe.recipeId}`} className="block group">
+              <li className="bg-white shadow-md rounded-lg overflow-hidden h-full transition transform hover:scale-105 hover:shadow-lg duration-200 ease-in-out">
                 <img
                   src={recipe.image}
                   alt={recipe.title}
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-4">
-                  <h2 className="text-2xl font-semibold text-blue-900 mb-2">
+                  <h2 className="text-2xl font-semibold text-blue-900 mb-2 group-hover:text-blue-700 transition duration-200">
                     {recipe.title}
                   </h2>
                 </div>
@@ -55,7 +55,7 @@ function Recipe() {
       </ul>
       <div className="text-center mt-8">
         <Link to="/create-recipe">
-          <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-blue-700 transition duration-150 ease-in-out">
+          <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-blue-700 transition duration-150 ease-in-out shadow-md hover:shadow-lg">
             Crear nueva receta
           </button>
         </Link>
