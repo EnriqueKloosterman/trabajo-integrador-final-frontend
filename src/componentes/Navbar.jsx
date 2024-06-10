@@ -12,25 +12,24 @@ const Navbar = () => {
     setDropdownOpen(false);
   }, [user]);
   return (
-    <nav className="bg-green-500 p-4 flex items-center justify-between">
-      {/* Logo */}
+    <nav className="bg-blue-100 p-4 flex items-center justify-between shadow-md">
       <div className="flex-shrink-0">
         <Link to="/">
-          <img src={logo} alt="Logo" className="h-16" />
+          <img src={logo} alt="Logo" className="h-12 w-12" />
         </Link>
       </div>
       <div className="flex-grow text-center">
-        <Link to="/" className="text-white text-4xl">
+        <Link to="/" className="text-black text-3xl font-semibold tracking-wide">
           Aventuras en la Cocina
         </Link>
       </div>
       <div className="flex-shrink-0 relative">
         {!user ? (
           <div className="flex space-x-4">
-            <Link to="/login" className="text-white hover:text-gray-300">
+            <Link to="/login" className="text-black hover:text-gray-600 transition-colors duration-300">
               Ingresar
             </Link>
-            <Link to="/register" className="text-white hover:text-gray-300">
+            <Link to="/register" className="text-black hover:text-gray-600 transition-colors duration-300">
               Crear Cuenta
             </Link>
           </div>
@@ -43,9 +42,9 @@ const Navbar = () => {
               <img
                 src={user.image}
                 alt="Avatar"
-                className="h-10 w-10 rounded-full object-cover"
+                className="h-10 w-10 rounded-full object-cover border-2 border-white"
               />
-              <span className="text-white">{user.userName} {user.userLastName}</span>
+              <span className="text-black font-medium">{user.userName} {user.userLastName}</span>
             </div>
             {dropdownOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1">
@@ -71,4 +70,3 @@ const Navbar = () => {
   );
 };
 export default Navbar;
-

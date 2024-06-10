@@ -1,9 +1,7 @@
-
 import { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { UserContext } from "./UserContext";
-
 function CreateArticle() {
   const { user } = useContext(UserContext);
   const [formData, setFormData] = useState({
@@ -12,10 +10,8 @@ function CreateArticle() {
     image: null,
     tag: "",
   });
-
   const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
-
   useEffect(() => {
     const fetchTags = async () => {
       try {
@@ -26,20 +22,16 @@ function CreateArticle() {
         console.error("Error al obtener las categorías:", error);
       }
     };
-
     fetchTags();
   }, []);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-
   const handleFileChange = (e) => {
     const { files } = e.target;
     setFormData({ ...formData, image: files[0] });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!user) {
@@ -50,13 +42,11 @@ function CreateArticle() {
       });
       return;
     }
-
     const data = new FormData();
     data.append("title", formData.title);
     data.append("article", formData.article);
     data.append("image", formData.image);
     data.append("userId", user.userId);
-
     try {
       const response = await fetch("http://localhost:3030/api/v2/articles/register", {
         method: "POST",
@@ -65,7 +55,6 @@ function CreateArticle() {
         },
         body: data,
       });
-
       if (response.status === 201) {
         Swal.fire({
           icon: "success",
@@ -94,13 +83,12 @@ function CreateArticle() {
       console.error("Error al crear el artículo:", error);
     }
   };
-
   return (
-    <div className="bg-green-100 p-6 rounded-lg shadow-lg">
-      <h2 className="text-2xl font-bold mb-4 text-black">Crear un nuevo artículo</h2>
+    <div className="bg-blue-100 p-6 rounded-lg shadow-lg">
+      <h2 className="text-2xl font-bold mb-4 text-gray-800">Crear un nuevo artículo</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label htmlFor="title" className="block text-black">Título del Artículo</label>
+          <label htmlFor="title" className="block text-gray-800">Título del Artículo</label>
           <input
             type="text"
             id="title"
@@ -108,40 +96,40 @@ function CreateArticle() {
             value={formData.title}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
+            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="article" className="block text-black">Contenido del Artículo</label>
+          <label htmlFor="article" className="block text-gray-800">Contenido del Artículo</label>
           <textarea
             id="article"
             name="article"
             value={formData.article}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
+            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="image" className="block text-black">Imagen</label>
+          <label htmlFor="image" className="block text-gray-800">Imagen</label>
           <input
             type="file"
             id="image"
             name="image"
             onChange={handleFileChange}
             required
-            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
+            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="tag" className="block text-black">Categoría</label>
+          <label htmlFor="tag" className="block text-gray-800">Categoría</label>
           <select
             id="tag"
             name="tag"
             value={formData.tag}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
+            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500"
           >
             <option value="">Selecciona una categoría</option>
             {categories.map((tag) => (
@@ -151,7 +139,7 @@ function CreateArticle() {
         </div>
         <button
           type="submit"
-          className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline-green active:bg-green-700"
+          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-blue-700"
         >
           Crear Artículo
         </button>
@@ -159,6 +147,4 @@ function CreateArticle() {
     </div>
   );
 }
-
 export default CreateArticle;
-

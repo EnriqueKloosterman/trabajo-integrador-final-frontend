@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import RecipeCarousel from "./RecipeCarousel";
-
 function Article() {
   const [articles, setArticles] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredArticles, setFilteredArticles] = useState([]);
   const articlesUrl = "http://localhost:3030/api/v2/articles/articles";
-
   useEffect(() => {
     fetch(articlesUrl)
       .then((res) => res.json())
@@ -16,17 +14,14 @@ function Article() {
         setArticles(data);
       });
   }, []);
-
   useEffect(() => {
     const filtered = articles.filter((article) =>
       article.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
-
     setFilteredArticles(filtered);
   }, [searchTerm, articles]);
-
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 bg-blue-50 min-h-screen">
       <RecipeCarousel />
       <div className="mb-4 flex items-center">
         <input
@@ -34,11 +29,11 @@ function Article() {
           placeholder="Buscar artículos..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full px-4 py-2 border rounded-l-lg focus:outline-none focus:border-green-500"
+          className="w-full px-4 py-2 border rounded-l-lg focus:outline-none focus:border-blue-500"
         />
         <button
           onClick={() => setSearchTerm("")}
-          className="py-2 px-4 bg-green-500 border border-green-500 text-white rounded-r-lg hover:bg-green-600 transition-colors duration-300"
+          className="py-2 px-4 bg-blue-500 border border-blue-500 text-white rounded-r-lg hover:bg-blue-600 transition-colors duration-300"
         >
           Limpiar
         </button>
@@ -47,7 +42,7 @@ function Article() {
         {filteredArticles.map((article, i) => (
           <div
             key={i}
-            className="bg-white shadow-lg rounded-lg overflow-hidden article-card"
+            className="bg-white shadow-md rounded-lg overflow-hidden article-card"
           >
             <Link to={`/articles/${article.articleId}`}>
               <img
@@ -56,7 +51,7 @@ function Article() {
                 className="w-full h-48 object-cover"
               />
               <div className="p-4">
-                <h2 className="text-2xl font-semibold text-green-700 mb-2">
+                <h2 className="text-2xl font-semibold text-blue-700 mb-2">
                   {article.title}
                 </h2>
                 <div className="pl-6">
@@ -73,7 +68,7 @@ function Article() {
       </div>
       <div className="text-center mt-8">
         <Link to="/create-article">
-          <button className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline-green active:bg-green-700">
+          <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-blue-700">
             Crear nuevo Artículo
           </button>
         </Link>
@@ -81,5 +76,5 @@ function Article() {
     </div>
   );
 }
-
 export default Article;
+
