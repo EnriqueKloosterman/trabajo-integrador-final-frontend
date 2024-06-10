@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Swal from 'sweetalert2';
-
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
     userName: '',
@@ -9,7 +8,6 @@ const RegisterPage = () => {
     userPassword: '',
     image: null,
   });
-
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     if (name === 'image') {
@@ -18,7 +16,6 @@ const RegisterPage = () => {
       setFormData({ ...formData, [name]: value });
     }
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formDataToSend = new FormData();
@@ -30,7 +27,6 @@ const RegisterPage = () => {
         method: 'POST',
         body: formDataToSend,
       });
-
       if (response.status === 201) {
         Swal.fire({
           icon: 'success',
@@ -54,9 +50,8 @@ const RegisterPage = () => {
       });
     }
   };
-
   return (
-    <div className="bg-green-100 p-6 rounded-lg shadow-lg max-w-md mx-auto">
+    <div className="container mx-auto p-6 bg-blue-100 rounded-lg shadow-lg max-w-md">
       <h2 className="text-2xl font-bold mb-4 text-black">Registrarse</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
@@ -68,7 +63,7 @@ const RegisterPage = () => {
             value={formData.userName}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
+            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500"
           />
         </div>
         <div className="mb-4">
@@ -80,7 +75,7 @@ const RegisterPage = () => {
             value={formData.userLastName}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
+            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500"
           />
         </div>
         <div className="mb-4">
@@ -92,7 +87,7 @@ const RegisterPage = () => {
             value={formData.userEmail}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
+            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500"
           />
         </div>
         <div className="mb-4">
@@ -104,7 +99,7 @@ const RegisterPage = () => {
             value={formData.userPassword}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
+            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500"
           />
         </div>
         <div className="mb-4">
@@ -115,12 +110,12 @@ const RegisterPage = () => {
             name="image"
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
+            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500"
           />
         </div>
         <button
           type="submit"
-          className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline-green active:bg-green-700"
+          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-blue-700"
         >
           Registrarse
         </button>
@@ -128,6 +123,4 @@ const RegisterPage = () => {
     </div>
   );
 };
-
 export default RegisterPage;
-

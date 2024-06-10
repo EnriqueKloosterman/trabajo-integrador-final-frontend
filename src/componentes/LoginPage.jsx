@@ -2,24 +2,20 @@ import { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { UserContext } from './UserContext';
-
 const LoginPage = () => {
   const [formData, setFormData] = useState({
     userEmail: '',
     userPassword: '',
   });
-
   const { handleLogin } = useContext(UserContext)
   const navigate = useNavigate();
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Submitting form with data:', formData); 
+    console.log('Submitting form with data:', formData);
     try {
       const response = await fetch('http://localhost:3030/api/v2/auth/login', {
         method: 'POST',
@@ -28,10 +24,9 @@ const LoginPage = () => {
         },
         body: JSON.stringify(formData),
       });
-
       if (response.ok) {
         const data = await response.json();
-        console.log('Response data:', data); 
+        console.log('Response data:', data);
         handleLogin(data, data.token);
         Swal.fire({
           icon: 'success',
@@ -58,9 +53,8 @@ const LoginPage = () => {
       });
     }
   };
-
   return (
-    <div className="bg-green-100 p-6 rounded-lg shadow-lg max-w-md mx-auto">
+    <div className="container mx-auto p-6 bg-blue-100 rounded-lg shadow-lg max-w-md">
       <h2 className="text-2xl font-bold mb-4 text-black">Iniciar Sesión</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
@@ -72,7 +66,7 @@ const LoginPage = () => {
             value={formData.userEmail}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
+            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500"
           />
         </div>
         <div className="mb-4">
@@ -84,22 +78,20 @@ const LoginPage = () => {
             value={formData.userPassword}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
+            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500"
           />
         </div>
         <button
           type="submit"
-          className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline-green active:bg-green-700"
+          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-blue-700"
         >
           Iniciar Sesión
         </button>
       </form>
       <p className="mt-4 text-black">
-        ¿No tienes una cuenta? <Link to="/register" className="text-green-500 hover:underline">Registrarse</Link>
+        ¿No tienes una cuenta? <Link to="/register" className="text-blue-500 hover:underline">Registrarse</Link>
       </p>
     </div>
   );
 };
-
 export default LoginPage;
-
