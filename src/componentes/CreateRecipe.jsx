@@ -1,8 +1,10 @@
-import  { useEffect, useState } from 'react';
+import  { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { UserContext } from './UserContext';
 
 const RecipeForm = () => {
+  const { user } = useContext(UserContext);
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -33,15 +35,37 @@ const RecipeForm = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+const handleFlieChange = (e) => {
+  const { files } = e.target;
+  setFormData({ ...formData, image: files[0] });
+}
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if(!user) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Debes iniciar sesión para crear una receta.',
+      });
+      return;
+    }
+
+    const data = new FormData();
+    data.append('title', formData.title);
+    data.append('description', formData.description);
+    data.append('ingredients', formData.ingredients);
+    data.append('instructions', formData.instructions);
+    data.append("image", formData.image);
+    data.append("userId", user.userId);
+
     try {
       const response = await fetch('http://localhost:3030/api/v2/recipes/register', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem("token")}`
         },
-        body: JSON.stringify(formData),
+        body: data,
       }); 
 
       if (response.status === 201) {
@@ -53,8 +77,10 @@ const RecipeForm = () => {
         });
         setTimeout(() => {
           navigate('/recipes');
-        })
+        }, 2000)
       } else {
+        const errorData = await response.json()
+        console.error('Error al crear la receta:', errorData);
         Swal.fire({
           icon: 'error',
           title: 'Error al crear la receta',
@@ -143,7 +169,7 @@ const RecipeForm = () => {
             type="file"
             id="image"
             name="image"
-            onChange={handleChange}
+            onChange={handleFlieChange}
             required
             className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
           />
