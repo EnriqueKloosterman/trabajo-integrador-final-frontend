@@ -1,9 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+
+import { UserContext } from "./UserContext";
+import Comments from "./Comments";
 
 function RecipeDetail() {
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     fetch(`http://localhost:3030/api/v2/recipes/recipe/${id}`)
@@ -47,6 +51,7 @@ function RecipeDetail() {
                 {recipe.instructions.map((recipe, i) => (
                   <li key={i} className="text-gray-800 text-base mb-2">{recipe}</li>
                 ))}
+                <Comments recipeId={id} user={user}/>
               </ul>
             </div>
             <div className="text-center">
