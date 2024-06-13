@@ -7,7 +7,7 @@ function Welcome() {
       <p className="mb-4">
         ¡Hola a todos y bienvenidos a "Aventuras en la Cocina"! En este espacio creado con amor y dedicación para todos los amantes de la cocina, 
         desde principiantes hasta expertos. Queremos compartir con ustedes la pasión y el gozo que 
-        he encontrado en el arte culinario. Aquí, todos tenemos una cosa en común: el amor
+        hemos encontrado en el arte culinario. Aquí, todos tenemos una cosa en común: el amor
          por la buena comida y las experiencias inolvidables que nacen en la cocina...
       </p>
       <a href="#" className="text-blue-500">Sigue leyendo...</a>

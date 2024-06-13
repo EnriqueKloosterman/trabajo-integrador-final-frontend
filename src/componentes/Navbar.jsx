@@ -71,13 +71,7 @@ const Navbar = () => {
             )}
           </div>
         </div>
-        <ul className="flex justify-center space-x-4 mt-4 w-full">
-          <li><Link to="/" className="text-black font-bold hover:text-red-500">INICIO</Link></li>
-          <li><Link to="/recetas" className="text-black font-bold hover:text-red-500">RECETAS</Link></li>
-          <li><Link to="/categorias" className="text-black font-bold hover:text-red-500">CATEGORIAS</Link></li>
-          <li><Link to="/articulos" className="text-black font-bold hover:text-red-500">ARTICULOS</Link></li>
-          
-        </ul>
+        
       </div>
     </nav>
   );
