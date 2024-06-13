@@ -13,6 +13,7 @@ import CreateArticle from "./componentes/CreateArticle";
 import RegisterPage from "./componentes/RegisterPage";
 import LoginPage from "./componentes/LoginPage";
 import UserProfile from "./componentes/UserProfile"; 
+import Welcome from "./componentes/Welcome"; 
 
 
 
@@ -38,6 +39,7 @@ function App() {
         <Route path='/users' element={<Users />} />
         <Route path='/profile' element={<UserProfile />} />
         <Route path='/comments' element={<Comments />} />
+        <Route path='/welcome' element={<Welcome />} />
 
       </Routes>
     </div>
