@@ -11,7 +11,7 @@ const RecipeCarousel = () => {
             try {
                 const response = await fetch('http://localhost:3030/api/v2/recipes/recipes');
                 const data = await response.json();
-                const latestRecipes = data.slice(-5); // Obtener las últimas 5 recetas
+                const latestRecipes = data.slice(-5); 
                 setRecipes(latestRecipes);
             } catch (error) {
                 console.error('Error fetching recipes:', error);
