@@ -14,7 +14,7 @@ const Menu = () => {
         <Link to="/articles" className="text-black text-lg hover:text-gray-600 transition-colors duration-300">
           Artículos
         </Link>
-        <Link to="/comments" className="text-black text-lg hover:text-gray-600 transition-colors duration-300">
+        <Link to="/contacto" className="text-black text-lg hover:text-gray-600 transition-colors duration-300">
           Comentarios
         </Link>
         <Link to="/categories" className="text-black text-lg hover:text-gray-600 transition-colors duration-300">
