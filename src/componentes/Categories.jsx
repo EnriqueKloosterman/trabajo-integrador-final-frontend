@@ -1,4 +1,5 @@
 import React from 'react';
+
 const Categories = () => {
   const categories = [
     "Carnes y Aves",
