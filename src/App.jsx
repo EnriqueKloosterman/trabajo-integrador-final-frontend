@@ -14,6 +14,8 @@ import RegisterPage from "./componentes/RegisterPage";
 import LoginPage from "./componentes/LoginPage";
 import UserProfile from "./componentes/UserProfile"; 
 import Welcome from "./componentes/Welcome"; 
+import Menu from "./componentes/Menu"; 
+
 
 
 
@@ -40,6 +42,7 @@ function App() {
         <Route path='/profile' element={<UserProfile />} />
         <Route path='/comments' element={<Comments />} />
         <Route path='/welcome' element={<Welcome />} />
+        <Route path='/menu' element={<Menu />} />
 
       </Routes>
     </div>
