@@ -2,6 +2,8 @@ import React from 'react';
 import Menu from './Menu';
 import Welcome from './Welcome';
 import RecipeCarousel from './RecipeCarousel';
+import Article from './article';
+import Recipe from './recipe';
 
 const Home = () => {
   return (
@@ -9,6 +11,8 @@ const Home = () => {
       <RecipeCarousel />
       <Menu />
       <Welcome />
+      <Recipe />
+      <Article />
     </div>
   );
 };
