@@ -15,6 +15,9 @@ import LoginPage from "./componentes/LoginPage";
 import UserProfile from "./componentes/UserProfile"; 
 import Welcome from "./componentes/Welcome"; 
 import Menu from "./componentes/Menu"; 
+import Home from "./componentes/Home";
+
+
 
 
 
@@ -43,6 +46,7 @@ function App() {
         <Route path='/comments' element={<Comments />} />
         <Route path='/welcome' element={<Welcome />} />
         <Route path='/menu' element={<Menu />} />
+        <Route path='/home' element={<Home />} />
 
       </Routes>
     </div>
