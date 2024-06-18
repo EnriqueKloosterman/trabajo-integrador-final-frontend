@@ -23,6 +23,8 @@ import Home from "./componentes/Home";
 
 
 
+
+
 function App() {
   return (
     <div className="container px-3 bg-slate-100 mx-auto">
@@ -47,6 +49,7 @@ function App() {
         <Route path='/welcome' element={<Welcome />} />
         <Route path='/menu' element={<Menu />} />
         <Route path='/home' element={<Home />} />
+        
 
       </Routes>
     </div>
