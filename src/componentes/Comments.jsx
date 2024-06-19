@@ -60,7 +60,7 @@ useEffect(() => {
                     <div key={comment.commentId} className='mb-4'>
                         <div className='flex items-center'>
                             <img src={comment.user.image} alt="user avatar" className='h-8 mr-2 rounded-full object-cover' />
-                            <p className='text-sm text-gray-500'>{comment.user.name} {comment.user.userLastName}</p>
+                            <p className='text-sm text-gray-500'>{comment.user.name} {comment.user.lastName}</p>
                         </div>
                         <p className='text-gray-800'>{comment.comment}</p>
 

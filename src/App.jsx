@@ -36,7 +36,7 @@ function App() {
         <Route path="recipes/:id" element={<RecipeDetail />} />
         <Route path="/create-recipe" element={<CreateRecipe />} />
         <Route path="/users" element={<Users />} />
-        <Route exact path="/" element={<Article />} />
+        <Route exact path="/articles" element={<Article />} />
         <Route path="/articles/:id" element={<ArticleDetail />} />
         <Route path="/create-article" element={<CreateArticle />} />
         <Route  path='/contact' element={<Contact />} />
@@ -48,7 +48,7 @@ function App() {
         <Route path='/comments' element={<Comments />} />
         <Route path='/welcome' element={<Welcome />} />
         <Route path='/menu' element={<Menu />} />
-        <Route path='/home' element={<Home />} />
+        <Route path='/' element={<Home />} />
         
 
       </Routes>
