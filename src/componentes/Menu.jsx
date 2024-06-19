@@ -8,7 +8,7 @@ const Menu = () => {
         <Link to="/recipes" className="text-black text-lg hover:text-gray-600 transition-colors duration-300">
           Recetas
         </Link>
-        <Link to="/article" className="text-black text-lg hover:text-gray-600 transition-colors duration-300">
+        <Link to="/articles" className="text-black text-lg hover:text-gray-600 transition-colors duration-300">
           Artículos
         </Link>
         <Link to="/categories" className="text-black text-lg hover:text-gray-600 transition-colors duration-300">
