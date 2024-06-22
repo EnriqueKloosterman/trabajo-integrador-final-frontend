@@ -104,6 +104,7 @@ const RecipeForm = () => {
         <p className="text-gray-700 mb-2">Para subir una nueva receta, sigue estos pasos:</p>
         <ol className="list-decimal list-inside text-gray-700 mb-4">
           <li className="mb-2">Completa todos los campos del formulario con la información de tu receta.</li>
+          <li className="mb-2">Al final de cada parrafo e ingredientes // para que se vean por separado.</li>
           <li className="mb-2">Añade una imagen de la receta usando el campo de archivo.</li>
           <li className="mb-2">Haz clic en "Crear Receta" para subir la receta.</li>
           <li className="mb-2">Asegúrate de estar registrado y haber iniciado sesión antes de subir una receta.</li>

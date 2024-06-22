@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Comments from "./Comments";
 import { UserContext } from "./UserContext"; 
+import EditButton from "./EditButton";
 
 function ArticleDetail() {
     const { id } = useParams();
@@ -45,6 +46,9 @@ function ArticleDetail() {
                             <p key={i} className="text-gray-800 text-base mb-4">{paragraph}</p>
                         ))}
                         <Comments articleId={id} user={user} />
+                        <div className="text-right mb-4">
+                            <EditButton authorEmail={article.user.userEmail} editLink={`/article-edit/${id}`} />
+                        </div>
                         <div className="text-center">
                             <Link to="/">
                                 <button className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-6 rounded-full focus:outline-none focus:ring-2 focus:ring-purple-600 active:bg-purple-800">

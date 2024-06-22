@@ -16,6 +16,7 @@ import UserProfile from "./componentes/UserProfile";
 import Welcome from "./componentes/Welcome"; 
 import Menu from "./componentes/Menu"; 
 import Home from "./componentes/Home";
+import CategoryRecipes from "./componentes/Categories";
 
 
 
@@ -48,6 +49,7 @@ function App() {
         <Route path='/comments' element={<Comments />} />
         <Route path='/welcome' element={<Welcome />} />
         <Route path='/menu' element={<Menu />} />
+        <Route path="/categories" element={<CategoryRecipes />} />
         <Route path='/' element={<Home />} />
         
 

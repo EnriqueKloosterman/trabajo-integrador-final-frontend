@@ -48,13 +48,16 @@ function CreateArticle() {
     data.append("image", formData.image);
     data.append("userId", user.userId);
     try {
-      const response = await fetch("http://localhost:3030/api/v2/articles/register", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`
-        },
-        body: data,
-      });
+      const response = await fetch(
+        "http://localhost:3030/api/v2/articles/register",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          body: data,
+        }
+      );
       if (response.status === 201) {
         Swal.fire({
           icon: "success",
@@ -71,7 +74,9 @@ function CreateArticle() {
         Swal.fire({
           icon: "error",
           title: "Error al crear el artículo",
-          text: `Hubo un problema al crear el artículo: ${errorData.message || 'Error desconocido'}`,
+          text: `Hubo un problema al crear el artículo: ${
+            errorData.message || "Error desconocido"
+          }`,
         });
       }
     } catch (error) {
@@ -85,10 +90,48 @@ function CreateArticle() {
   };
   return (
     <div className="bg-blue-100 p-6 rounded-lg shadow-lg">
-      <h2 className="text-2xl font-bold mb-4 text-gray-800">Crear un nuevo artículo</h2>
+      <h2 className="text-2xl font-bold mb-4 text-gray-800">
+        Crear una nueva artículo
+      </h2>
+      <div className="bg-white shadow-md rounded-lg p-6 mb-8">
+        <h3 className="text-xl font-semibold text-blue-900 mb-4">
+          Instrucciones para subir articulos
+        </h3>
+        <p className="text-gray-700 mb-2">
+          Para subir una nueva artículo, sigue estos pasos:
+        </p>
+        <ol className="list-decimal list-inside text-gray-700 mb-4">
+          <li className="mb-2">
+            Completa todos los campos del formulario con la información de tu
+            artículo.
+          </li>
+          <li className="mb-2">
+            Al final de cada parrafo agragar // para separar los parrafos.
+          </li>
+          <li className="mb-2">
+            Añade una imagen del artículo el campo de archivo.
+          </li>
+          <li className="mb-2">
+            Haz clic en "Crear Artículo" para subir la receta.
+          </li>
+          <li className="mb-2">
+            Asegúrate de estar registrado y haber iniciado sesión antes de subir
+            un artículo.
+          </li>
+        </ol>
+        <p className="text-gray-700">
+          Una vez publicada, tu artículo estará disponible para que otros
+          usuarios la vean y comenten.
+        </p>
+      </div>
+      <h2 className="text-2xl font-bold mb-4 text-gray-800">
+        Crear un nuevo artículo
+      </h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label htmlFor="title" className="block text-gray-800">Título del Artículo</label>
+          <label htmlFor="title" className="block text-gray-800">
+            Título del Artículo
+          </label>
           <input
             type="text"
             id="title"
@@ -100,7 +143,9 @@ function CreateArticle() {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="article" className="block text-gray-800">Contenido del Artículo</label>
+          <label htmlFor="article" className="block text-gray-800">
+            Contenido del Artículo
+          </label>
           <textarea
             id="article"
             name="article"
@@ -111,7 +156,9 @@ function CreateArticle() {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="image" className="block text-gray-800">Imagen</label>
+          <label htmlFor="image" className="block text-gray-800">
+            Imagen
+          </label>
           <input
             type="file"
             id="image"
@@ -122,7 +169,9 @@ function CreateArticle() {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="tag" className="block text-gray-800">Categoría</label>
+          <label htmlFor="tag" className="block text-gray-800">
+            Categoría
+          </label>
           <select
             id="tag"
             name="tag"
@@ -133,7 +182,9 @@ function CreateArticle() {
           >
             <option value="">Selecciona una categoría</option>
             {categories.map((tag) => (
-              <option key={tag.tagId} value={tag.tagId}>{tag.tag}</option>
+              <option key={tag.tagId} value={tag.tagId}>
+                {tag.tag}
+              </option>
             ))}
           </select>
         </div>

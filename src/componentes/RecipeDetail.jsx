@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 
 import { UserContext } from "./UserContext";
 import Comments from "./Comments";
+import EditButton from "./EditButton";
 
 function RecipeDetail() {
   const { id } = useParams();
@@ -53,6 +54,9 @@ function RecipeDetail() {
                 ))}
                 <Comments recipeId={id} user={user}/>
               </ul>
+            </div>
+            <div className="text-right mb-4">
+              <EditButton authorEmail={recipe.user.userEmail} editLink={`/recipe-edit/${id}`} />
             </div>
             <div className="text-center">
               <Link to="/recipes">

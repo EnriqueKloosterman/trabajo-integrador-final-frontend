@@ -36,7 +36,8 @@ function Article() {
           Limpiar
         </button>
       </div>
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {/* <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"> */}
+      <div className="flex-col" >
         {filteredArticles.map((article, i) => (
           <div
             key={i}
@@ -46,7 +47,7 @@ function Article() {
               <img
                 src={article.image}
                 alt={article.title}
-                className="w-full h-48 object-cover"
+                className="w-1/3 h-48 ml-5 object-cover"
               />
               <div className="p-4">
                 <h2 className="text-2xl font-semibold text-blue-700 mb-2">
