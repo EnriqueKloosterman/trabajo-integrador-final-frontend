@@ -16,6 +16,9 @@ import UserProfile from "./componentes/UserProfile";
 import Welcome from "./componentes/Welcome"; 
 import Menu from "./componentes/Menu"; 
 import Home from "./componentes/Home";
+import ProtectedRoute from './auth/ProtectedRoute';
+
+
 
 
 
@@ -28,14 +31,20 @@ import Home from "./componentes/Home";
 
 function App() {
   return (
+    
     <div className="container px-3 bg-slate-100 mx-auto">
       <Navbar />
       <Routes>
         {/* <Route path="/coments" element={<Coments />} />
         <Route path="/coments" element={<Coments />} /> */}
+       
+       
         <Route path="/recipes" element={<Recipe />} />
         <Route path="recipes/:id" element={<RecipeDetail />} />
+        
+       
         <Route path="/create-recipe" element={<CreateRecipe />} />
+        
         <Route path="/users" element={<Users />} />
         <Route exact path="/articles" element={<Article />} />
         <Route path="/articles/:id" element={<ArticleDetail />} />
@@ -43,12 +52,22 @@ function App() {
         <Route  path='/contact' element={<Contact />} />
         <Route path="*" element={<NotFound />} />
         <Route path='/register' element={<RegisterPage />} />
-        <Route path='/login' element={<LoginPage />} />
+       <Route path='/login' element={<LoginPage />} />
+      
+           
+            <Route element={<ProtectedRoute />}></Route>
         <Route path='/users' element={<Users />} />
+             
+             
         <Route path='/profile' element={<UserProfile />} />
+             
         <Route path='/comments' element={<Comments />} />
         <Route path='/welcome' element={<Welcome />} />
+
+              <Route element={<ProtectedRoute />}></Route>
         <Route path='/menu' element={<Menu />} />
+        
+        <Route element={<ProtectedRoute />}></Route>
         <Route path='/' element={<Home />} />
         
 
@@ -58,4 +77,3 @@ function App() {
 }
 
 export default App;
-
