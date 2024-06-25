@@ -1,17 +1,17 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Menu = () => {
   return (
-    <div className="bg-blue-100 p-4 shadow-md">
+    <div className="bg-gray-800 p-4 shadow-md">
       <div className="container mx-auto flex justify-around">
-        
-        <Link to="/recipes" className="text-black text-lg hover:text-gray-600 transition-colors duration-300">
+        <Link to="/recipes" className="text-white text-lg font-semibold hover:text-gray-400 transition-colors duration-300" style={{ textShadow: "1px 1px 3px #000000" }}>
           Recetas
         </Link>
-        <Link to="/articles" className="text-black text-lg hover:text-gray-600 transition-colors duration-300">
+        <Link to="/articles" className="text-white text-lg font-semibold hover:text-gray-400 transition-colors duration-300" style={{ textShadow: "1px 1px 3px #000000" }}>
           Artículos
         </Link>
-        <Link to="/contact" className="text-black text-lg hover:text-gray-600 transition-colors duration-300">
+        <Link to="/contact" className="text-white text-lg font-semibold hover:text-gray-400 transition-colors duration-300" style={{ textShadow: "1px 1px 3px #000000" }}>
           Contacto
         </Link>
       </div>
@@ -20,4 +20,3 @@ const Menu = () => {
 };
 
 export default Menu;
-

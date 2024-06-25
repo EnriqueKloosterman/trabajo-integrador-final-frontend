@@ -20,10 +20,18 @@ const RecipeForm = () => {
     const fetchCategories = async () => {
       try {
         const response = await fetch("http://localhost:3030/api/v2/categories/categories");
+        if (!response.ok) {
+          throw new Error('Error al obtener las categorías.');
+        }
         const data = await response.json();
         setCategories(data);
       } catch (error) {
         console.error('Error al obtener las categorías:', error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error al obtener las categorías',
+          text: 'Hubo un problema al cargar las categorías. Por favor, inténtalo de nuevo más tarde.',
+        });
       }
     };
     fetchCategories();
@@ -98,22 +106,22 @@ const RecipeForm = () => {
 
   return (
     <div className="bg-blue-100 p-6 rounded-lg shadow-lg">
-      <h2 className="text-2xl font-bold mb-4 text-gray-800">Crear una nueva receta</h2>
+      <h2 className="text-4xl font-bold mb-8 text-gray-800">Crear una nueva receta</h2>
       <div className="bg-white shadow-md rounded-lg p-6 mb-8">
-        <h3 className="text-xl font-semibold text-blue-900 mb-4">Instrucciones para subir recetas</h3>
-        <p className="text-gray-700 mb-2">Para subir una nueva receta, sigue estos pasos:</p>
-        <ol className="list-decimal list-inside text-gray-700 mb-4">
+        <h3 className="text-2xl font-semibold text-blue-900 mb-4">Instrucciones para subir recetas</h3>
+        <p className="text-lg text-gray-700 mb-2">Para subir una nueva receta, sigue estos pasos:</p>
+        <ol className="list-decimal list-inside text-lg text-gray-700 mb-4">
           <li className="mb-2">Completa todos los campos del formulario con la información de tu receta.</li>
-          <li className="mb-2">Al final de cada parrafo e ingredientes // para que se vean por separado.</li>
+          <li className="mb-2">Al final de cada párrafo e ingredientes <strong>//</strong> para que se vean por separado.</li>
           <li className="mb-2">Añade una imagen de la receta usando el campo de archivo.</li>
           <li className="mb-2">Haz clic en "Crear Receta" para subir la receta.</li>
           <li className="mb-2">Asegúrate de estar registrado y haber iniciado sesión antes de subir una receta.</li>
         </ol>
-        <p className="text-gray-700">Una vez publicada, tu receta estará disponible para que otros usuarios la vean y comenten.</p>
+        <p className="text-lg text-gray-700">Una vez publicada, tu receta estará disponible para que otros usuarios la vean y comenten.</p>
       </div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="bg-white shadow-md rounded-lg p-6">
         <div className="mb-4">
-          <label htmlFor="title" className="block text-gray-800">Título</label>
+          <label htmlFor="title" className="block text-xl text-gray-800">Título</label>
           <input
             type="text"
             id="title"
@@ -121,52 +129,51 @@ const RecipeForm = () => {
             value={formData.title}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500"
+            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500 text-xl"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="description" className="block text-gray-800">Descripción (Agregar // al final de cada párrafo)</label>
+          <label htmlFor="description" className="block text-xl text-gray-800">Descripción (Agregar <strong>//</strong> al final de cada párrafo)</label>
           <textarea
             id="description"
             name="description"
             value={formData.description}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500"
+            className="w-full h-40 px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500 text-xl"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="ingredients" className="block text-gray-800">Ingredientes (Agregar // al final de cada ingrediente para separarlos)</label>
-          <input
-            type="text"
+          <label htmlFor="ingredients" className="block text-xl text-gray-800">Ingredientes (Agregar <strong>//</strong> al final de cada ingrediente para separarlos)</label>
+          <textarea
             id="ingredients"
             name="ingredients"
             value={formData.ingredients}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500"
+            className="w-full h-40 px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500 text-xl"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="instructions" className="block text-gray-800">Instrucciones (Agregar // al final de cada párrafo)</label>
+          <label htmlFor="instructions" className="block text-xl text-gray-800">Instrucciones (Agregar <strong>//</strong> al final de cada párrafo)</label>
           <textarea
             id="instructions"
             name="instructions"
             value={formData.instructions}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500"
+            className="w-full h-40 px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500 text-xl"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="category" className="block text-gray-800">Categoría</label>
+          <label htmlFor="category" className="block text-xl text-gray-800">Categoría</label>
           <select
             id="category"
             name="category"
             value={formData.category}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500"
+            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500 text-xl"
           >
             <option value="">Selecciona una categoría</option>
             {categories.map((category) => (
@@ -175,14 +182,14 @@ const RecipeForm = () => {
           </select>
         </div>
         <div className="mb-4">
-          <label htmlFor="image" className="block text-gray-800">Imagen</label>
+          <label htmlFor="image" className="block text-xl text-gray-800">Imagen</label>
           <input
             type="file"
             id="image"
             name="image"
             onChange={handleFileChange}
             required
-            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500"
+            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500 text-xl"
           />
         </div>
         <button
