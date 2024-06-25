@@ -1,20 +1,21 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import backgroundImage from '../assets/azul.webp'; 
-
+import { UserContext } from './UserContext';
 const LoginPage = () => {
   const [formData, setFormData] = useState({
     userEmail: '',
     userPassword: '',
   });
-
+  const { handleLogin } = useContext(UserContext)
+  const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('Submitting form with data:', formData);
     try {
       const response = await fetch('http://localhost:3030/api/v2/auth/login', {
         method: 'POST',
@@ -23,20 +24,20 @@ const LoginPage = () => {
         },
         body: JSON.stringify(formData),
       });
-
       if (response.ok) {
         const data = await response.json();
         console.log('Response data:', data);
+        handleLogin(data, data.token);
         Swal.fire({
           icon: 'success',
           title: 'Inicio de sesión exitoso',
           showConfirmButton: false,
           timer: 2000,
         });
-        // Aquí podrías manejar la lógica de redirección o gestión de sesión
+        navigate('/');
       } else {
         const errorData = await response.json();
-        console.error('Error response data:', errorData);
+        console.error('Error response data:', errorData);  // Log the error response data
         Swal.fire({
           icon: 'error',
           title: 'Error al iniciar sesión',
@@ -52,53 +53,47 @@ const LoginPage = () => {
       });
     }
   };
-
   return (
-    <div
-      className='min-h-screen flex items-center justify-center'
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
-    >
+    <div className='min-h-screen flex items-center justify-center bg-gray-100'>
       <div className="container mx-auto p-6 bg-blue-100 rounded-lg shadow-lg max-w-md">
-        <h2 className="text-2xl font-bold mb-4 text-black">Iniciar Sesión</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label htmlFor="userEmail" className="block text-black">Correo Electrónico</label>
-            <input
-              type="email"
-              id="userEmail"
-              name="userEmail"
-              value={formData.userEmail}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500"
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="userPassword" className="block text-black">Contraseña</label>
-            <input
-              type="password"
-              id="userPassword"
-              name="userPassword"
-              value={formData.userPassword}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500"
-            />
-          </div>
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-blue-700"
-          >
-            Iniciar Sesión
-          </button>
-        </form>
+      <h2 className="text-2xl font-bold mb-4 text-black">Iniciar Sesión</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="mb-4">
+          <label htmlFor="userEmail" className="block text-black">Correo Electrónico</label>
+          <input
+            type="email"
+            id="userEmail"
+            name="userEmail"
+            value={formData.userEmail}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500"
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="userPassword" className="block text-black">Contraseña</label>
+          <input
+            type="password"
+            id="userPassword"
+            name="userPassword"
+            value={formData.userPassword}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500"
+          />
+        </div>
+        <button
+          type="submit"
+          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-blue-700"
+        >
+          Iniciar Sesión
+        </button>
+      </form>
+      <p className="mt-4 text-black">
+        ¿No tienes una cuenta? <Link to="/register" className="text-blue-500 hover:underline">Registrarse</Link>
+      </p>
       </div>
     </div>
   );
 };
-
 export default LoginPage;

@@ -55,7 +55,7 @@ function App() {
        <Route path='/login' element={<LoginPage />} />
       
            
-            <Route element={<ProtectedRoute />}></Route>
+            
         <Route path='/users' element={<Users />} />
              
              
