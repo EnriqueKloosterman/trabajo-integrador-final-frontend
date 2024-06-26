@@ -7,7 +7,7 @@ import EditButton from "./EditButton";
 function ArticleDetail() {
     const { id } = useParams();
     const [article, setArticle] = useState(null);
-    const { user } = useContext(UserContext); 
+    const { user, getToken } = useContext(UserContext); 
 
     useEffect(() => {
         const fetchArticle = async () => {
@@ -45,7 +45,7 @@ function ArticleDetail() {
                         {article.article.map((paragraph, i) => (
                             <p key={i} className="text-gray-800 text-base mb-4">{paragraph}</p>
                         ))}
-                        <Comments articleId={id} user={user} />
+                        <Comments articleId={id} user={user} token={getToken()}/>
                         <div className="text-right mb-4">
                             <EditButton authorEmail={article.user.userEmail} editLink={`/article-edit/${id}`} />
                         </div>

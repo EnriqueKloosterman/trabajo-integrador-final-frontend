@@ -37,8 +37,12 @@ const UserProvider = ({ children }) => {
     return user?.role === 'user';
   };
 
+  const getToken = () => {
+    return localStorage.getItem('token');
+  };
+
   return (
-    <UserContext.Provider value={{ user, handleLogin, handleLogOut, isAdmin, isUser }}>
+    <UserContext.Provider value={{ user, handleLogin, handleLogOut, isAdmin, isUser, getToken }}>
       {children}
     </UserContext.Provider>
   );

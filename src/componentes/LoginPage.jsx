@@ -15,7 +15,6 @@ const LoginPage = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Submitting form with data:', formData);
     try {
       const response = await fetch('http://localhost:3030/api/v2/auth/login', {
         method: 'POST',
@@ -37,7 +36,7 @@ const LoginPage = () => {
         navigate('/');
       } else {
         const errorData = await response.json();
-        console.error('Error response data:', errorData);  // Log the error response data
+        console.error('Error response data:', errorData);  
         Swal.fire({
           icon: 'error',
           title: 'Error al iniciar sesión',
