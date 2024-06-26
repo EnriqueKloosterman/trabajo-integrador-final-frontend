@@ -17,6 +17,7 @@ import Welcome from "./componentes/Welcome";
 import Menu from "./componentes/Menu"; 
 import Home from "./componentes/Home";
 import ProtectedRoute from './auth/ProtectedRoute';
+import Footer from "./componentes/footer";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/recipes" element={<Recipe />} />
         <Route path="recipes/:id" element={<RecipeDetail />} />
         <Route path="/create-recipe" element={<CreateRecipe />} />
+        <Route path="/footer" element={< Footer />} />
         <Route path="/users" element={<Users />} />
         <Route exact path="/articles" element={<Article />} />
         <Route path="/articles/:id" element={<ArticleDetail />} />

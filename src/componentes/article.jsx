@@ -1,24 +1,27 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+
 function Article() {
   const [articles, setArticles] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredArticles, setFilteredArticles] = useState([]);
   const articlesUrl = "http://localhost:3030/api/v2/articles/articles";
+
   useEffect(() => {
     fetch(articlesUrl)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setArticles(data);
       });
   }, []);
+
   useEffect(() => {
     const filtered = articles.filter((article) =>
       article.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredArticles(filtered);
   }, [searchTerm, articles]);
+
   return (
     <div className="container mx-auto p-4 bg-blue-50 min-h-screen">
       <div className="mb-4 flex items-center">
@@ -36,7 +39,7 @@ function Article() {
           Limpiar
         </button>
       </div>
-      <div className="flex-col" >
+      <div className="flex-col">
         {filteredArticles.map((article, i) => (
           <div
             key={i}
@@ -66,7 +69,7 @@ function Article() {
       </div>
       <div className="text-center mt-8">
         <Link to="/create-article">
-          <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-blue-700">
+          <button className="text-white bg-gray-800 hover:bg-gray-700 font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-gray-800 active:bg-gray-900">
             Crear nuevo Artículo
           </button>
         </Link>
@@ -74,6 +77,5 @@ function Article() {
     </div>
   );
 }
+
 export default Article;
-
-

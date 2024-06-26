@@ -69,7 +69,7 @@ function Contact() {
         <div className="text-center mt-8">
           <button
             type="submit"
-            className="bg-green-500 hover:bg-green-600 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300"
+            className="bg-gray-800 hover:bg-gray-700 text-white font-semibold px-8 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-800 active:bg-gray-900 transition-colors duration-300"
           >
             Enviar Mensaje
           </button>

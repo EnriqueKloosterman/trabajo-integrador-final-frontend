@@ -2,17 +2,21 @@ import { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { UserContext } from './UserContext';
+
 const LoginPage = () => {
   const [formData, setFormData] = useState({
     userEmail: '',
     userPassword: '',
   });
-  const { handleLogin } = useContext(UserContext)
+
+  const { handleLogin } = useContext(UserContext);
   const navigate = useNavigate();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -52,47 +56,49 @@ const LoginPage = () => {
       });
     }
   };
+
   return (
-    <div className='min-h-screen flex items-center justify-center bg-gray-100'>
-      <div className="container mx-auto p-6 bg-blue-100 rounded-lg shadow-lg max-w-md">
-      <h2 className="text-2xl font-bold mb-4 text-black">Iniciar Sesión</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label htmlFor="userEmail" className="block text-black">Correo Electrónico</label>
-          <input
-            type="email"
-            id="userEmail"
-            name="userEmail"
-            value={formData.userEmail}
-            onChange={handleChange}
-            required
-            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500"
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="userPassword" className="block text-black">Contraseña</label>
-          <input
-            type="password"
-            id="userPassword"
-            name="userPassword"
-            value={formData.userPassword}
-            onChange={handleChange}
-            required
-            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500"
-          />
-        </div>
-        <button
-          type="submit"
-          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-blue-700"
-        >
-          Iniciar Sesión
-        </button>
-      </form>
-      <p className="mt-4 text-black">
-        ¿No tienes una cuenta? <Link to="/register" className="text-blue-500 hover:underline">Registrarse</Link>
-      </p>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600">
+      <div className="container mx-auto p-6 bg-white rounded-lg shadow-2xl max-w-md">
+        <h2 className="text-3xl font-bold mb-6 text-gray-800">Iniciar Sesión</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-6">
+            <label htmlFor="userEmail" className="block text-gray-700">Correo Electrónico</label>
+            <input
+              type="email"
+              id="userEmail"
+              name="userEmail"
+              value={formData.userEmail}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500"
+            />
+          </div>
+          <div className="mb-6">
+            <label htmlFor="userPassword" className="block text-gray-700">Contraseña</label>
+            <input
+              type="password"
+              id="userPassword"
+              name="userPassword"
+              value={formData.userPassword}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500"
+            />
+          </div>
+          <button
+            type="submit"
+            className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:shadow-outline transition-all duration-300"
+          >
+            Iniciar Sesión
+          </button>
+        </form>
+        <p className="mt-4 text-gray-700">
+          ¿No tienes una cuenta? <Link to="/register" className="text-blue-500 hover:underline">Registrarse</Link>
+        </p>
       </div>
     </div>
   );
 };
+
 export default LoginPage;
