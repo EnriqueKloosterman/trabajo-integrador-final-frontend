@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { UserContext } from './UserContext';
-
 const RecipeForm = () => {
   const { user } = useContext(UserContext);
   const [formData, setFormData] = useState({
@@ -15,7 +14,6 @@ const RecipeForm = () => {
   });
   const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
-
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -28,17 +26,14 @@ const RecipeForm = () => {
     };
     fetchCategories();
   }, []);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-
   const handleFileChange = (e) => {
     const { files } = e.target;
     setFormData({ ...formData, image: files[0] });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!user) {
@@ -49,7 +44,6 @@ const RecipeForm = () => {
       });
       return;
     }
-
     const data = new FormData();
     data.append('title', formData.title);
     data.append('description', formData.description);
@@ -57,7 +51,6 @@ const RecipeForm = () => {
     data.append('instructions', formData.instructions);
     data.append('image', formData.image);
     data.append('userId', user.userId);
-
     try {
       const response = await fetch('http://localhost:3030/api/v2/recipes/register', {
         method: 'POST',
@@ -66,7 +59,6 @@ const RecipeForm = () => {
         },
         body: data,
       });
-
       if (response.status === 201) {
         Swal.fire({
           icon: 'success',
@@ -95,7 +87,6 @@ const RecipeForm = () => {
       console.error('Error al crear la receta:', error);
     }
   };
-
   return (
     <div className="bg-blue-100 p-6 rounded-lg shadow-lg">
       <h2 className="text-2xl font-bold mb-4 text-gray-800">Crear una nueva receta</h2>
@@ -195,5 +186,4 @@ const RecipeForm = () => {
     </div>
   );
 };
-
 export default RecipeForm;

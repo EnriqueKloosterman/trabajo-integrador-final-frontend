@@ -16,15 +16,41 @@ import UserProfile from "./componentes/UserProfile";
 import Welcome from "./componentes/Welcome"; 
 import Menu from "./componentes/Menu"; 
 import Home from "./componentes/Home";
+<<<<<<< HEAD
+=======
+import ProtectedRoute from './auth/ProtectedRoute';
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> b166e1300b21199cf272c1ae9d071d8b7cf371aa
 
 function App() {
   return (
+    
     <div className="container px-3 bg-slate-100 mx-auto">
       <Navbar />
       <Routes>
+<<<<<<< HEAD
+=======
+        {/* <Route path="/coments" element={<Coments />} />
+        <Route path="/coments" element={<Coments />} /> */}
+       
+       
+>>>>>>> b166e1300b21199cf272c1ae9d071d8b7cf371aa
         <Route path="/recipes" element={<Recipe />} />
         <Route path="recipes/:id" element={<RecipeDetail />} />
+        
+       
         <Route path="/create-recipe" element={<CreateRecipe />} />
+        
         <Route path="/users" element={<Users />} />
         <Route exact path="/articles" element={<Article />} />
         <Route path="/articles/:id" element={<ArticleDetail />} />
@@ -32,12 +58,25 @@ function App() {
         <Route  path='/contact' element={<Contact />} />
         <Route path="*" element={<NotFound />} />
         <Route path='/register' element={<RegisterPage />} />
-        <Route path='/login' element={<LoginPage />} />
+       <Route path='/login' element={<LoginPage />} />
+      
+           
+            
         <Route path='/users' element={<Users />} />
+             
+             
         <Route path='/profile' element={<UserProfile />} />
+             
         <Route path='/comments' element={<Comments />} />
         <Route path='/welcome' element={<Welcome />} />
+
+              <Route element={<ProtectedRoute />}></Route>
         <Route path='/menu' element={<Menu />} />
+<<<<<<< HEAD
+=======
+        
+        <Route element={<ProtectedRoute />}></Route>
+>>>>>>> b166e1300b21199cf272c1ae9d071d8b7cf371aa
         <Route path='/' element={<Home />} />
         
 
@@ -47,4 +86,3 @@ function App() {
 }
 
 export default App;
-
