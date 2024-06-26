@@ -58,8 +58,8 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600">
-      <div className="container mx-auto p-6 bg-white rounded-lg shadow-2xl max-w-md">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="container mx-auto p-6 bg-white rounded-lg shadow-lg max-w-md">
         <h2 className="text-3xl font-bold mb-6 text-gray-800">Iniciar Sesión</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-6">
@@ -88,7 +88,7 @@ const LoginPage = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:shadow-outline transition-all duration-300"
+            className="w-full bg-gray-800 hover:bg-gray-900 text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:shadow-outline transition-all duration-300"
           >
             Iniciar Sesión
           </button>
