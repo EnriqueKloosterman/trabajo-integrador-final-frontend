@@ -34,7 +34,7 @@ function Article() {
         />
         <button
           onClick={() => setSearchTerm("")}
-          className="py-2 px-4 bg-blue-500 border border-blue-500 text-white rounded-r-lg hover:bg-blue-600 transition-colors duration-300"
+          className="py-2 px-4 bg-gray-800 border bg-gray-800 text-white rounded-r-lg hover:bg-blue-600 transition-colors duration-300"
         >
           Limpiar
         </button>

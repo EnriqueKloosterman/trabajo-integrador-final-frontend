@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+
 function Recipe() {
   const [recipes, setRecipes] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const recipesUrl = "http://localhost:3030/api/v2/recipes/recipes";
+
   useEffect(() => {
     fetch(recipesUrl)
       .then((res) => res.json())
@@ -13,15 +15,18 @@ function Recipe() {
         setRecipes(data);
       });
   }, []);
+
   useEffect(() => {
     const filteredRecipes = recipes.filter((recipe) =>
       recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setSearchResults(filteredRecipes);
   }, [searchTerm, recipes]);
+
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
   };
+
   return (
     <div className="container mx-auto p-4">
       <div className="mb-4">
@@ -55,7 +60,7 @@ function Recipe() {
       </ul>
       <div className="text-center mt-8">
         <Link to="/create-recipe">
-          <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-blue-700 transition duration-150 ease-in-out shadow-md hover:shadow-lg">
+          <button className="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-gray-900 transition duration-150 ease-in-out shadow-md hover:shadow-lg">
             Crear nueva receta
           </button>
         </Link>
@@ -63,4 +68,5 @@ function Recipe() {
     </div>
   );
 }
+
 export default Recipe;
