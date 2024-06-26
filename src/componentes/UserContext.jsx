@@ -30,11 +30,11 @@ const UserProvider = ({ children }) => {
   };
 
   const isAdmin = () => {
-    return user?.role === 'admin';
+    return user?.user_role === 'admin';
   };
 
   const isUser = () => {
-    return user?.role === 'user';
+    return user?.user_role === 'user';
   };
 
   const getToken = () => {

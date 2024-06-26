@@ -1,6 +1,5 @@
 
-import aventurasImage from '../assets/aventuras-2.jpg'; // Ajusta la ruta según donde almacenes la imagen
-
+import aventurasImage from '../assets/aventuras-2.jpg'; 
 function Welcome() {
   return (
     <section className="welcome p-6 bg-gray-100 rounded-md shadow-md mt-5">
