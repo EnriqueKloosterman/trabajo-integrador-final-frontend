@@ -1,7 +1,8 @@
-import { useState, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { UserContext } from './UserContext';
+import logo from '../assets/azul.webp';  // Ruta de tu imagen de fondo, asegúrate de que sea correcta
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
@@ -58,7 +59,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: `url(${logo})` }}>
       <div className="container mx-auto p-6 bg-white rounded-lg shadow-lg max-w-md">
         <h2 className="text-3xl font-bold mb-6 text-gray-800">Iniciar Sesión</h2>
         <form onSubmit={handleSubmit}>

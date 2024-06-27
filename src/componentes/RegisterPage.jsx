@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Swal from 'sweetalert2';
+import logo from '../assets/azul.webp'; // Asegúrate de que la ruta sea correcta
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
@@ -55,7 +56,7 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: `url(${logo})` }}>
       <div className="container mx-auto p-6 bg-white rounded-lg shadow-lg max-w-md">
         <h2 className="text-3xl font-bold mb-6 text-gray-800">Registrarse</h2>
         <form onSubmit={handleSubmit}>
