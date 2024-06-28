@@ -56,7 +56,7 @@ function RecipeDetail() {
               </ul>
             </div>
             <div className="text-right mb-4">
-              <EditButton authorEmail={recipe.user.userEmail} editLink={`/recipe-edit/${id}`} />
+              <EditButton authorEmail={recipe.user.userEmail} editLink={`/update/recipe/${id}`} />
             </div>
             <div className="text-center">
               <Link to="/recipes">

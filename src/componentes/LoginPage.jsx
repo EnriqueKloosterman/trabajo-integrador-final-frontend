@@ -1,8 +1,8 @@
-import React, { useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { UserContext } from './UserContext';
-import logo from '../assets/azul.webp';  // Ruta de tu imagen de fondo, asegúrate de que sea correcta
+import logo from '../assets/azul.webp';  
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({

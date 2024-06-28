@@ -18,6 +18,7 @@ import Menu from "./componentes/Menu";
 import Home from "./componentes/Home";
 import ProtectedRoute from './auth/ProtectedRoute';
 import Footer from "./componentes/footer";
+import UpdateRecipe from "./componentes/recipe/UpdateRecipe";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <Route path="/menu" element={<Menu />} />
         <Route element={<ProtectedRoute />}></Route>
         <Route path="/" element={<Home />} />
+        <Route path="/update/recipe/:id" element={< UpdateRecipe />} />
       </Routes>
     </div>
   );
