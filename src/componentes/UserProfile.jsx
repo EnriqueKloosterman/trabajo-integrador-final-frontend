@@ -60,7 +60,7 @@ const UserProfile = () => {
         {recipes.length > 0 ? (
           <div className="space-y-4">
             {recipes.map(recipe => (
-              <Link to={`/recipes/${recipe.recipeId}`} key={recipe.recipeId} className="border p-4 rounded">
+              <Link to={`/recipes/${recipe.recipeId}`} key={recipe.recipeId} className="p-4 rounded">
               <img src={recipe.image} alt="imagen" className="h-16 w-16 object-cover rounded mb-2" />
               <h2 className="text-2xl font-bold">{recipe.title}</h2>
             </Link>

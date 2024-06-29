@@ -8,18 +8,20 @@ const RecipeCarousel = () => {
 
     useEffect(() => {
         const fetchRecipes = async () => {
-            try {
-                const response = await fetch('http://localhost:3030/api/v2/recipes/recipes');
-                const data = await response.json();
-                const latestRecipes = data.slice(-5); 
-                setRecipes(latestRecipes);
-            } catch (error) {
-                console.error('Error fetching recipes:', error);
+          try {
+            const response = await fetch("http://localhost:3030/api/v2/recipes/recipes");
+            if (!response.ok) {
+              throw new Error("Failed to fetch recipes");
             }
+            const data = await response.json();
+            setRecipes(data);
+          } catch (error) {
+            console.error("Error fetching recipes:", error);
+          }
         };
-
+    
         fetchRecipes();
-    }, []);
+      }, []);
 
     const settings = {
         dots: true,

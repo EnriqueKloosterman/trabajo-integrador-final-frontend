@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { useParams, Navigate } from "react-router-dom";
+import { useParams, Navigate, useNavigate } from "react-router-dom";
 import { UserContext } from "../UserContext";
 
 const UpdateRecipe = () => {
@@ -10,11 +10,12 @@ const UpdateRecipe = () => {
     description: "",
     ingredients: "",
     instructions: "",
-    category: ""
+    categoryId: ""
   });
   const [categories, setCategories] = useState([]);
-  const [authorEmail, setAuthorEmail] = useState(""); 
-  const [loading, setLoading] = useState(true); 
+  const [authorEmail, setAuthorEmail] = useState("");
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchRecipeAndCategories = async () => {
@@ -35,18 +36,16 @@ const UpdateRecipe = () => {
           throw new Error("Recipe not found");
         }
         const recipeData = await recipeResponse.json();
-        console.log(recipeData);
 
         setAuthorEmail(recipeData.user.userEmail);
-        setLoading(false); 
-
         setFormData({
           title: recipeData.title || "",
-          description: recipeData.description ? recipeData.description.join(" // ") : "",
-          ingredients: recipeData.ingredients ? recipeData.ingredients.join(" // ") : "",
-          instructions: recipeData.instructions ? recipeData.instructions.join(" // ") : "",
-          category: recipeData.category ? recipeData.category.categoryId.toString() : ""
+          description: recipeData.description ? recipeData.description.join("//") : "",
+          ingredients: recipeData.ingredients ? recipeData.ingredients.join("//") : "",
+          instructions: recipeData.instructions ? recipeData.instructions.join("//") : "",
+          categoryId: recipeData.category ? recipeData.category.categoryId.toString() : ""
         });
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -64,30 +63,39 @@ const UpdateRecipe = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
+      if (!id) {
+        console.error("No id");
+        return;
+      }
+
+      const body = JSON.stringify({
+        ...formData,
+        description: formData.description.split("//"),
+        ingredients: formData.ingredients.split("//"),
+        instructions: formData.instructions.split("//"),
+        categoryId: formData.categoryId
+      });
+
       const response = await fetch(
-        `http://localhost:3030//api/v2/recipes/update/recipe/${id}`,
+        `http://localhost:3030/api/v2/recipes/update/recipe/${id}`,
         {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify({
-            ...formData,
-            // description: formData.description.split(" // "),
-            description: formData.description,
-            // ingredients: formData.ingredients.split(" // "),
-            ingredients: formData.ingredients,
-            // instructions: formData.instructions.split(" // "),
-            instructions: formData.instructions,
-            categoryId: parseInt(formData.category),
-          }),
+          body: body,
         }
       );
+
       if (!response.ok) {
-        console.log(response);
-        throw new Error("Failed to update recipe", console.error);
+        const responseText = await response.text();
+        console.error("Failed to update recipe", responseText);
+        throw new Error("Failed to update recipe");
       }
+
+      console.log("Recipe updated successfully");
+      navigate(`/recipes/${id}`);
     } catch (error) {
       console.error("Error updating recipe:", error);
     }
@@ -96,6 +104,7 @@ const UpdateRecipe = () => {
   if (loading) {
     return <p>Cargando...</p>;
   }
+
   if (user.userEmail !== authorEmail) {
     return <Navigate to="/" />;
   }
@@ -175,15 +184,14 @@ const UpdateRecipe = () => {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="category" className="block text-gray-800">
+          <label htmlFor="categoryId" className="block text-gray-800">
             Categoría
           </label>
           <select
-            id="category"
-            name="category"
-            value={formData.category}
-            onChange={handleChange}
-            required
+            id="categoryId"
+            name="categoryId"
+            value={formData.categoryId}
+            onChange={handleChange} 
             className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500"
           >
             <option value="">Selecciona una categoría</option>
