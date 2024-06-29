@@ -115,13 +115,13 @@ function CreateArticle() {
             Completa todos los campos del formulario con la información de tu artículo.
           </li>
           <li className="mb-2">
-            Al final de cada párrafo agrega "//" para separar los párrafos.
+            Al final de cada párrafo agrega <span className="font-bold">//</span> para separar los párrafos.
           </li>
           <li className="mb-2">
             Añade una imagen del artículo en el campo de archivo.
           </li>
           <li className="mb-2">
-            Haz clic en "Crear Artículo" para subir la receta.
+            Haz clic en <span className="font-bold">Crear Artículo</span> para subir la receta.
           </li>
           <li className="mb-2">
             Asegúrate de estar registrado y haber iniciado sesión antes de subir un artículo.

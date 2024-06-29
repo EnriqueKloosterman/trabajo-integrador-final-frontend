@@ -47,7 +47,7 @@ function ArticleDetail() {
                         ))}
                         <Comments articleId={id} user={user} token={getToken()}/>
                         <div className="text-right mb-4">
-                            <EditButton authorEmail={article.user.userEmail} editLink={`/article-edit/${id}`} />
+                            <EditButton authorEmail={article.user.userEmail} editLink={`/update/article/${id}`} />
                         </div>
                         <div className="text-center">
                             <Link to="/">
