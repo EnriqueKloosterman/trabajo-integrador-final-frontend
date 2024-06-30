@@ -23,14 +23,14 @@ function Contact() {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-4xl font-bold text-green-700 mb-8">¡Contáctanos!</h1>
+      <h1 className="text-4xl font-bold text-black mb-8">¡Contáctanos!</h1>
       <p className="text-lg text-gray-700">
         ¡Hola! Somos Malvina Pacheco, Florencia Da Rosa y Enrique Kloosterman, un grupo de estudiantes de programación full-stack.
         Estamos aquí para ayudarte en lo que necesites relacionado con aventuras en la cocina.
       </p>
       <p className="text-lg text-gray-700 mt-4">
         Si tienes preguntas, comentarios o sugerencias, no dudes en ponerte en contacto con nosotros.
-        Puedes enviarnos un correo electrónico a <a href="mailto:info@aventurasenlacocina.com" className="text-green-500 hover:underline">info@aventurasenlacocina.com</a> o llenar el formulario de contacto a continuación.
+        Puedes enviarnos un correo electrónico a <a href="mailto:info@aventurasenlacocina.com" className="text-black hover:underline">info@aventurasenlacocina.com</a> o llenar el formulario de contacto a continuación.
       </p>
 
       <form onSubmit={handleSubmit} className="mt-8">
@@ -42,7 +42,7 @@ function Contact() {
             value={formData.name}
             onChange={handleChange}
             placeholder="Tu nombre"
-            className="block w-full px-4 py-3 placeholder-gray-500 border rounded-lg focus:outline-none focus:border-green-500"
+            className="block w-full px-4 py-3 placeholder-gray-500 border rounded-lg focus:outline-none focus:border-black"
             required
           />
           <input
@@ -52,7 +52,7 @@ function Contact() {
             value={formData.email}
             onChange={handleChange}
             placeholder="Tu correo electrónico"
-            className="block w-full px-4 py-3 placeholder-gray-500 border rounded-lg focus:outline-none focus:border-green-500"
+            className="block w-full px-4 py-3 placeholder-gray-500 border rounded-lg focus:outline-none focus:border-black"
             required
           />
           <textarea
@@ -62,7 +62,7 @@ function Contact() {
             onChange={handleChange}
             rows="4"
             placeholder="Tu mensaje"
-            className="block w-full px-4 py-3 placeholder-gray-500 border rounded-lg focus:outline-none focus:border-green-500"
+            className="block w-full px-4 py-3 placeholder-gray-500 border rounded-lg focus:outline-none focus:border-black"
             required
           ></textarea>
         </div>
