@@ -1,8 +1,10 @@
+import React from 'react';
 import Menu from './Menu';
 import Welcome from './Welcome';
 import RecipeCarousel from './RecipeCarousel';
 import Article from './article';
 import Recipe from './recipe';
+import Footer from './footer'; 
 
 const Home = () => {
   return (
@@ -28,6 +30,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <Footer /> 
     </div>
   );
 };
