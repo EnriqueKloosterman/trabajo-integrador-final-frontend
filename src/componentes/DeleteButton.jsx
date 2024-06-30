@@ -4,11 +4,7 @@ import { UserContext } from './UserContext';
 import Swal from 'sweetalert2';
 
 const DeleteButton = ({ authorName, commentId, onDelete }) => {
-  const { user } = useContext(UserContext);
-
-//   if (!user || user.userName !== authorName) return null; 
-
-    
+  const { user } = useContext(UserContext);    
 
   const handleDelete = async () => {
     try {
