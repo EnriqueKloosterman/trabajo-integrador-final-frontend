@@ -1,8 +1,8 @@
+// UserContext.jsx
 import { createContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { jwtDecode } from 'jwt-decode'
+import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
-
 
 const UserContext = createContext();
 
@@ -11,9 +11,9 @@ const UserProvider = ({ children }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const storedUser = localStorage.getItem('token');
-    if (storedUser) {
-      const decodedUser = jwtDecode(storedUser);
+    const storedToken = localStorage.getItem('token');
+    if (storedToken) {
+      const decodedUser = jwtDecode(storedToken);
       setUser(decodedUser);
     }
   }, []);
@@ -30,11 +30,11 @@ const UserProvider = ({ children }) => {
   };
 
   const isAdmin = () => {
-    return user?.user_role === 'admin';
+    return user?.role === 'admin';
   };
 
   const isUser = () => {
-    return user?.user_role === 'user';
+    return user?.role === 'user';
   };
 
   const getToken = () => {

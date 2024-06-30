@@ -58,13 +58,13 @@ function Recipe() {
           </div>
         ))}
       </ul>
-      <div className="text-center mt-8">
+      {/* <div className="text-center mt-8">
         <Link to="/create-recipe">
           <button className="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-gray-900 transition duration-150 ease-in-out shadow-md hover:shadow-lg">
             Crear nueva receta
           </button>
         </Link>
-      </div>
+      </div> */}
     </div>
   );
 }

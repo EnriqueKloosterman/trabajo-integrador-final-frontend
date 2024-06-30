@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { UserContext } from './UserContext';
 
@@ -199,6 +199,13 @@ const RecipeForm = () => {
           </button>
         </div>
       </form>
+      <div className="text-center mt-8">
+        <Link to="/profile">
+            <button className="text-white bg-gray-800 hover:bg-gray-700 font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-gray-800 active:bg-gray-900">
+              Volver al perfil
+            </button>
+        </Link>
+      </div>
     </div>
   );
 };

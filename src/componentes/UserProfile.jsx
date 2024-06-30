@@ -40,12 +40,26 @@ const UserProfile = () => {
       <div className="flex items-center justify-center mb-4">
         <img src={user.image} alt="avatar" className="h-32 w-32 rounded-full object-cover" />
       </div>
+      <div className="text-center mt-8">
+        <Link to="/create-article">
+          <button className="text-white bg-gray-800 hover:bg-gray-700 font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-gray-800 active:bg-gray-900">
+            Crear nuevo Artículo
+          </button>
+        </Link>
+      </div>
+      <div className="text-center mt-8">
+        <Link to="/create-recipe">
+          <button className="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-gray-900 transition duration-150 ease-in-out shadow-md hover:shadow-lg">
+            Crear nueva receta
+          </button>
+        </Link>
+      </div>
       <div className="mb-6">
         <h2 className="text-2xl font-semibold mb-2 text-black">Mis Artículos</h2>
         {articles.length > 0 ? (
           <div className="space-y-4">
             {articles.map(article => (
-                <Link to={`/articles/${article.articleId}`} key={article.articleId} className="border p-4 rounded">
+                <Link to={`/articles/${article.articleId}`} key={article.articleId} className="p-4 rounded">
                   <img src={article.image} alt="imagen" className="h-16 w-16 object-cover rounded mb-2" />
                   <h2 className="text-lg font-bold">{article.title}</h2>
                 </Link>

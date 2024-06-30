@@ -1,14 +1,14 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { UserContext } from "./UserContext";
 import Comments from "./Comments";
 import EditButton from "./EditButton";
-
 
 function RecipeDetail() {
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
   const { user, getToken } = useContext(UserContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(`http://localhost:3030/api/v2/recipes/recipe/${id}`)
@@ -18,6 +18,25 @@ function RecipeDetail() {
       });
   }, [id]);
 
+  const handleDelete = async () => {
+    const token = getToken();
+    try {
+      const response = await fetch(`http://localhost:3030/api/v2/recipes/remove/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      if (response.ok) {
+        navigate('/profile');
+      } else {
+        alert('Error al eliminar la receta');
+      }
+    } catch (error) {
+      alert('Error al eliminar la receta');
+    }
+  };
+
   if (!recipe) {
     return (
       <div className="flex items-center justify-center min-h-screen">
@@ -25,6 +44,8 @@ function RecipeDetail() {
       </div>
     );
   }
+
+  const canDelete = user && recipe.user && (user.userEmail === recipe.user.userEmail || user.user_role === 'admin');
 
   return (
     <div className="bg-gray-100">
@@ -58,10 +79,17 @@ function RecipeDetail() {
             <div className="text-right mb-4">
               <EditButton authorEmail={recipe.user.userEmail} editLink={`/update/recipe/${id}`} />
             </div>
+            {canDelete && (
+              <div className="text-right mb-4">
+                <button onClick={handleDelete} className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6 rounded focus:outline-none focus:ring-2 focus:ring-red-600 active:bg-red-800">
+                  Eliminar Receta
+                </button>
+              </div>
+            )}
             <div className="text-center">
               <Link to="/recipes">
                 <button className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded-full focus:outline-none focus:ring-2 focus:ring-green-600 active:bg-green-800">
-                  Volver a recetas
+                Volver a recetas
                 </button>
               </Link>
             </div>
