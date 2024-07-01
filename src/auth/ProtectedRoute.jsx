@@ -28,6 +28,8 @@ ProtectedRoute.propTypes = {
   }),
 };
 
-export default ProtectedRoute;
+
+
+export default ProtectedRoute
 
 

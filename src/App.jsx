@@ -14,7 +14,6 @@ import RegisterPage from "./componentes/RegisterPage";
 import LoginPage from "./componentes/LoginPage";
 import UserProfile from "./componentes/UserProfile"; 
 import Welcome from "./componentes/Welcome"; 
-import Menu from "./componentes/Menu"; 
 import Home from "./componentes/Home";
 import ProtectedRoute from './auth/ProtectedRoute';
 import Footer from "./componentes/footer";
@@ -48,8 +47,6 @@ function App() {
           <Route path="/create-recipe" element={<CreateRecipe />} />
           <Route path="/users" element={<Users />} />
           <Route path="/comments" element={<Comments />} />
-          <Route path="/menu" element={<Menu />} />
-          <Route path="/footer" element={<Footer />} />
           <Route path="/update/recipe/:id" element={<UpdateRecipe />} />
           <Route path="/update/article/:id" element={< UpdateArticle />} />
         </Route>
@@ -57,6 +54,7 @@ function App() {
         {/* Ruta de error 404 */}
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
