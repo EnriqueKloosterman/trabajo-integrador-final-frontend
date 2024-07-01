@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Comments from "./Comments";
 import { UserContext } from "./UserContext"; 
 import EditButton from "./EditButton";
@@ -7,7 +7,8 @@ import EditButton from "./EditButton";
 function ArticleDetail() {
     const { id } = useParams();
     const [article, setArticle] = useState(null);
-    const { user, getToken } = useContext(UserContext); 
+    const { user, getToken } = useContext(UserContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchArticle = async () => {
@@ -23,6 +24,23 @@ function ArticleDetail() {
         fetchArticle();
     }, [id]);
 
+    const handleDelete = async () => {
+        const token = getToken();
+        try {
+            const response = await fetch(`http://localhost:3030/api/v2/articles/remove/${id}`, {
+                method: "DELETE",
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                }
+            });
+            if(response.ok) {
+                navigate('/profile');
+            }
+        } catch (error) {
+            throw new Error("Error deleting article:", error);
+        }
+    }
+
     if (!article) {
         return (
             <div className="flex items-center justify-center min-h-screen">
@@ -30,6 +48,8 @@ function ArticleDetail() {
             </div>
         );
     }
+
+    const canDelete = user && article.user && (user.userEmail === article.user.userEmail || user.user_role === "admin");
 
     return (
         <div className="bg-gray-100">
@@ -49,6 +69,13 @@ function ArticleDetail() {
                         <div className="text-right mb-4">
                             <EditButton authorEmail={article.user.userEmail} editLink={`/update/article/${id}`} />
                         </div>
+                        {canDelete && (
+                            <div className="text-right mb-4">
+                                <button onClick={handleDelete} className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6 rounded focus:outline-none focus:ring-2 focus:ring-red-600 active:bg-red-800"> 
+                                    Eliminar Artículo
+                                </button>
+                            </div>
+                        )}
                         <div className="text-center">
                             <Link to="/">
                                 <button className="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-6 rounded focus:outline-none focus:ring-2 focus:ring-gray-800 active:bg-gray-900 transition-colors duration-300">

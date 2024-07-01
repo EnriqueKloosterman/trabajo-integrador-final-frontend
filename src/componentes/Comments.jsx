@@ -93,7 +93,7 @@ function Comments({ articleId, recipeId, user, token }) {
                             <img
                                 src={comment.user.image}
                                 alt="user avatar"
-                                className="h-8 mr-2 rounded-full object-cover"
+                                className="h-8 w-8 mr-2 rounded-full object-cover"
                             />
                             <p className="text-sm text-gray-500">
                                 {comment.user.name} {comment.user.lastName} 
