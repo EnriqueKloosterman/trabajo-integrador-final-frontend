@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import Comments from "./Comments";
 import { UserContext } from "./UserContext"; 
 import EditButton from "./EditButton";
+import Swal from 'sweetalert2';
 
 function ArticleDetail() {
     const { id } = useParams();
@@ -34,7 +35,20 @@ function ArticleDetail() {
                 }
             });
             if(response.ok) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Artículo eliminado correctamente',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
                 navigate('/profile');
+            } else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error al eliminar el artículo',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             }
         } catch (error) {
             throw new Error("Error deleting article:", error);

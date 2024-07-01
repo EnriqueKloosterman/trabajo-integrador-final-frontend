@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { UserContext } from "./UserContext";
 import Comments from "./Comments";
 import EditButton from "./EditButton";
+import Swal from 'sweetalert2';
 
 function RecipeDetail() {
   const { id } = useParams();
@@ -28,12 +29,23 @@ function RecipeDetail() {
         }
       });
       if (response.ok) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Receta eliminada correctamente',
+          showConfirmButton: false,
+          timer: 1500
+        })
         navigate('/profile');
       } else {
-        alert('Error al eliminar la receta');
+        Swal.fire({
+          icon: 'error',
+          title: 'Error al eliminar la receta',
+          showConfirmButton: false,
+          timer: 1500
+        });
       }
     } catch (error) {
-      alert('Error al eliminar la receta');
+      throw new Error('Error deleting Recipe', error);
     }
   };
 
