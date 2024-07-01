@@ -100,7 +100,7 @@ function RecipeDetail() {
             )}
             <div className="text-center">
               <Link to="/recipes">
-                <button className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded-full focus:outline-none focus:ring-2 focus:ring-green-600 active:bg-green-800">
+                <button className="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-6 rounded focus:outline-none focus:ring-2 focus:ring-gray-800 active:bg-gray-900 transition-colors duration-300">
                 Volver a recetas
                 </button>
               </Link>
