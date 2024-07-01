@@ -19,6 +19,8 @@ import Home from "./componentes/Home";
 import ProtectedRoute from './auth/ProtectedRoute';
 import Footer from "./componentes/footer";
 import UpdateRecipe from "./componentes/recipe/UpdateRecipe";
+import UpdateArticle from "./componentes/article/UpdateArticle";
+import ProtectedRouteLogin from "./auth/ProtectedRouteLogin";
 
 function App() {
   return (
@@ -32,9 +34,12 @@ function App() {
         <Route path="/recipes" element={<Recipe />} />
         <Route path="/recipes/:id" element={<RecipeDetail />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage />} />
         <Route path="/welcome" element={<Welcome />} />
+
+        <Route element={<ProtectedRouteLogin />}>
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
+        </Route>        
 
         {/* Rutas privadas */}
         <Route element={<ProtectedRoute />}>
@@ -46,6 +51,7 @@ function App() {
           <Route path="/menu" element={<Menu />} />
           <Route path="/footer" element={<Footer />} />
           <Route path="/update/recipe/:id" element={<UpdateRecipe />} />
+          <Route path="/update/article/:id" element={< UpdateArticle />} />
         </Route>
         
         {/* Ruta de error 404 */}
