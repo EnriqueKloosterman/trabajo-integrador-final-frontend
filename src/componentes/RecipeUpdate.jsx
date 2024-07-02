@@ -5,7 +5,7 @@ import { UserContext } from "./UserContext";
 const RecipeUpdate = () => {
     const { id } = useParams();
     const { user } = useContext(UserContext);
-    const history = useHistory(); // Importación correcta de useHistory desde react-router-dom
+    const history = useHistory(); 
     const [recipe, setRecipe] = useState(null);
     const [formData, setFormData] = useState({
         title: "",

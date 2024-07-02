@@ -1,4 +1,3 @@
-// UserContext.jsx
 import { createContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { jwtDecode } from 'jwt-decode';

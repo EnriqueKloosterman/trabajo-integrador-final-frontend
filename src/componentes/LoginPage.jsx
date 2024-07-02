@@ -30,7 +30,6 @@ const LoginPage = () => {
       });
       if (response.ok) {
         const data = await response.json();
-        console.log('Response data:', data);
         handleLogin(data, data.token);
         Swal.fire({
           icon: 'success',

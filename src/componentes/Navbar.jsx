@@ -16,11 +16,11 @@ const Navbar = () => {
   }, [user]);
 
   return (
-    <nav className="bg-gray-800 p-4 shadow-lg"> {/* Ajuste: color de fondo cambiado a bg-gray-800 */}
+    <nav className="bg-gray-800 p-4 shadow-lg"> 
       <div className="container mx-auto flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex-shrink-0">
-          <img src={logo} alt="Logo" className="h-20 w-auto" style={{ filter: "drop-shadow(0 0 5px rgba(0, 0, 0, 0.5))" }} /> {/* Ajuste: h-20 para hacer el logo más grande */}
+          <img src={logo} alt="Logo" className="h-20 w-auto" style={{ filter: "drop-shadow(0 0 5px rgba(0, 0, 0, 0.5))" }} /> 
         </Link>
 
         {/* Título */}

@@ -59,11 +59,9 @@ const UpdateArticle = () => {
         try {
             const token = localStorage.getItem("token");
             if(!token) {
-                console.log("No token found");
                 throw new Error("No token found");
             }
             if(!id) {
-                console.log("no id");
                 throw new Error("Article ID is missing");
             }
 
@@ -86,13 +84,10 @@ const UpdateArticle = () => {
             );
             if(!response.ok){
                 const responseText = await response.text();
-                console.log("Failed to update recipe", responseText);
-                throw new Error("Failed to update recipe");
+                throw new Error("Failed to update recipe", responseText);
             }
-            console.log("Artilcle updated succesfully");
             navigate(`/articles/${id}`);
         } catch (error) {
-            console.log("Error updating article", error.message);
             throw new Error("Error updating article", error.message);
         }
     }

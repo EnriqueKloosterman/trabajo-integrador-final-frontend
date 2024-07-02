@@ -93,8 +93,6 @@ const UpdateRecipe = () => {
         console.error("Failed to update recipe", responseText);
         throw new Error("Failed to update recipe");
       }
-
-      console.log("Recipe updated successfully");
       navigate(`/recipes/${id}`);
     } catch (error) {
       console.error("Error updating recipe:", error);

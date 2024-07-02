@@ -41,7 +41,6 @@ const RecipeCarousel = () => {
 
     return (
         <div className="container mx-auto py-12 w-2/3">
-            {/* <h2 className="text-3xl font-semibold text-center mb-8">Latest Recipes</h2> */}
             <Slider {...settings}>
                 {recipes.map(recipe => (
                     <div key={recipe.recipeId} className="p-4" onClick={() => handeleRecipeClick(recipe.recipeId)}>

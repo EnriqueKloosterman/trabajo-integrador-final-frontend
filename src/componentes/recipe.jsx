@@ -42,8 +42,8 @@ function Recipe() {
               <div className="pl-6">
                 {recipe.description.slice(0, 1).map((paragraph, j) => (
                   <p key={j} className="text-gray-700 text-base mb-2">
-                    {paragraph.slice(0, 100)} {/* Mostrar solo los primeros 100 caracteres */}
-                    {paragraph.length > 100 && "..."} {/* Añadir puntos suspensivos si el texto es más largo */}
+                    {paragraph.slice(0, 100)} 
+                    {paragraph.length > 100 && "..."} 
                   </p>
                 ))}
               </div>

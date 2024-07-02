@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Swal from 'sweetalert2';
 import logo from '../assets/azul.webp';
 
@@ -32,14 +32,13 @@ const RegisterPage = () => {
         body: formDataToSend,
       });
       if (response.status === 201) {
-        const responseData = await response.json(); // Assuming server sends back JSON response
+        const responseData = await response.json(); 
         Swal.fire({
           icon: 'success',
           title: `Registro exitoso, ¡Bienvenido ${responseData.userName}!`,
           showConfirmButton: false,
           timer: 2000,
         });
-        // Limpiar el formulario después de un registro exitoso
         setFormData({
           userName: '',
           userLastName: '',
