@@ -17,12 +17,11 @@ function Comments({ articleId, recipeId, user, token }) {
                 if (Array.isArray(data)) {
                     setComments(data);
                 } else {
-                    console.error("Expected an array of comments but got:", data);
                     setComments([]);
                 }
-            } catch (err) {
-                console.error("Error fetching comments:", err);
-                setComments([]);
+            } catch (error) {
+                throw new error("Error fetching comments:", error);
+                // setComments([]);
             }
         };
 
@@ -103,7 +102,7 @@ function Comments({ articleId, recipeId, user, token }) {
                                     onClick={() => handleDeleteComment(comment.commentId)}
                                     className="ml-2 text-sm text-red-500"
                                 >
-                                    ❌
+                                    Eliminar
                                 </button>
                             )}
                         </div>

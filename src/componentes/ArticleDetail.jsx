@@ -18,7 +18,7 @@ function ArticleDetail() {
                 const data = await res.json();
                 setArticle(data);
             } catch (error) {
-                console.error("Error fetching article data:", error);
+                throw new error("Error fetching article data:", error);
             }
         };
 

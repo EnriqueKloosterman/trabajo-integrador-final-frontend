@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Article from "./componentes/article";
 import Comments from "./componentes/Comments";
 import Recipe from "./componentes/recipe";
-import Users from "./componentes/Users";
+// import Users from "./componentes/Users";
 import Navbar from "./componentes/Navbar";
 import Contact from "./componentes/Contact";
 import NotFound from './componentes/NotFound';
@@ -20,6 +20,8 @@ import Footer from "./componentes/footer";
 import UpdateRecipe from "./componentes/recipe/UpdateRecipe";
 import UpdateArticle from "./componentes/article/UpdateArticle";
 import ProtectedRouteLogin from "./auth/ProtectedRouteLogin";
+import UserList from "./componentes/UsersList";
+import ProtectedAdminRoutes from "./auth/ProtectedAdminRoutes";
 
 function App() {
   return (
@@ -38,14 +40,17 @@ function App() {
         <Route element={<ProtectedRouteLogin />}>
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
-        </Route>        
+        </Route> 
+
+        <Route element={<ProtectedAdminRoutes />} >
+          <Route path="/users" element={<UserList />} />
+        </Route>
 
         {/* Rutas privadas */}
         <Route element={<ProtectedRoute />}>
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/create-article" element={<CreateArticle />} />
           <Route path="/create-recipe" element={<CreateRecipe />} />
-          <Route path="/users" element={<Users />} />
           <Route path="/comments" element={<Comments />} />
           <Route path="/update/recipe/:id" element={<UpdateRecipe />} />
           <Route path="/update/article/:id" element={< UpdateArticle />} />

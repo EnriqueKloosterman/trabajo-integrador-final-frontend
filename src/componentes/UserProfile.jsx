@@ -3,7 +3,7 @@ import { UserContext } from './UserContext';
 import { Link } from 'react-router-dom';
 
 const UserProfile = () => {
-  const { user } = useContext(UserContext);
+  const { user, isAdmin } = useContext(UserContext);
   const [articles, setArticles] = useState([]);
   const [recipes, setRecipes] = useState([]);
 
@@ -54,6 +54,15 @@ const UserProfile = () => {
           </button>
         </Link>
       </div>
+      {isAdmin() && (
+        <div className="text-center mt-8">
+          <Link to="/users">
+            <button className="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-gray-900 transition duration-150 ease-in-out shadow-md hover:shadow-lg">
+              Lista de Usuarios
+            </button>
+          </Link>
+        </div>
+      )}
       <div className="mb-6">
         <h2 className="text-2xl font-semibold mb-2 text-black">Mis Artículos</h2>
         {articles.length > 0 ? (

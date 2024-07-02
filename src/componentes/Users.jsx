@@ -6,10 +6,6 @@ function Users() {
   const [users, setUsers] = useState([]);
   const usersUrl = "http://localhost:3030/api/v2/users/users";
   const { user, isAdmin, getToken } = useContext(UserContext); 
-  console.log(localStorage.getItem("token"));
-  console.log("User:", user);
-  console.log("isAdmin:", isAdmin());
-  console.log("Token:", getToken());
 
   useEffect(() => {
     if(!isAdmin){
