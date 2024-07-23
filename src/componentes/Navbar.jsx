@@ -16,7 +16,7 @@ const Navbar = () => {
   }, [user]);
 
   return (
-    <nav className="bg-gray-800 p-4 shadow-lg"> 
+    <nav className="bg-teal-600 p-4 shadow-lg"> 
       <div className="container mx-auto flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex-shrink-0">

@@ -42,14 +42,14 @@ const UserProfile = () => {
       </div>
       <div className="text-center mt-8">
         <Link to="/create-article">
-          <button className="text-white bg-gray-800 hover:bg-gray-700 font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-gray-800 active:bg-gray-900">
+          <button className="text-white bg-teal-600 hover:bg-teal-800 font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-gray-800 active:bg-gray-900">
             Crear nuevo Artículo
           </button>
         </Link>
       </div>
       <div className="text-center mt-8">
         <Link to="/create-recipe">
-          <button className="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-gray-900 transition duration-150 ease-in-out shadow-md hover:shadow-lg">
+          <button className="bg-teal-600 hover:bg-teal-800 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-gray-900 transition duration-150 ease-in-out shadow-md hover:shadow-lg">
             Crear nueva receta
           </button>
         </Link>
@@ -57,7 +57,7 @@ const UserProfile = () => {
       {isAdmin() && (
         <div className="text-center mt-8">
           <Link to="/users">
-            <button className="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-gray-900 transition duration-150 ease-in-out shadow-md hover:shadow-lg">
+            <button className="bg-teal-600 hover:bg-teal-800 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-gray-900 transition duration-150 ease-in-out shadow-md hover:shadow-lg">
               Lista de Usuarios
             </button>
           </Link>

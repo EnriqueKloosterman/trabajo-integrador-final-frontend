@@ -186,14 +186,14 @@ function CreateArticle() {
         </div>
         <button
           type="submit"
-          className="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-gray-900 transition duration-150 ease-in-out shadow-md hover:shadow-lg"
+          className="bg-teal-600 hover:bg-teal-800 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-gray-900 transition duration-150 ease-in-out shadow-md hover:shadow-lg"
         >
           Crear Artículo
         </button>
       </form>
       <div className="text-center mt-8">
         <Link to="/profile">
-            <button className="text-white bg-gray-800 hover:bg-gray-700 font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-gray-800 active:bg-gray-900">
+            <button className="text-white bg-teal-600 hover:bg-teal-800 font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-gray-800 active:bg-gray-900">
               Volver al perfil
             </button>
         </Link>

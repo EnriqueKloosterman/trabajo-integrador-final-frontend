@@ -9,7 +9,7 @@ const EditButton = ({ authorEmail, editLink }) => {
     if (!user || user.userEmail !== authorEmail) return null;
     return (
         <Link to={editLink}>
-            <button className="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-6 rounded focus:outline-none focus:ring-2 focus:ring-gray-800 active:bg-gray-900 transition-colors duration-300">
+            <button className="bg-teal-600 hover:bg-teal-800 text-white font-semibold py-2 px-6 rounded focus:outline-none focus:ring-2 focus:ring-gray-800 active:bg-gray-900 transition-colors duration-300">
                 Editar
             </button>
         </Link>

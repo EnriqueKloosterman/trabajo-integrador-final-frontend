@@ -120,7 +120,7 @@ function Comments({ articleId, recipeId, user, token }) {
                         ></textarea>
                         <button
                             type="submit"
-                            className="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-6 rounded focus:outline-none focus:ring-2 focus:ring-gray-800 active:bg-gray-900 transition-colors duration-300"
+                            className="bg-teal-600 hover:bg-teal-800 text-white font-semibold py-2 px-6 rounded focus:outline-none focus:ring-2 focus:ring-gray-800 active:bg-gray-900 transition-colors duration-300"
                         >
                             Comentar
                         </button>

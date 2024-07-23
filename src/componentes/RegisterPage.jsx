@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Swal from 'sweetalert2';
-import logo from '../assets/azul.webp';
+import logo from '../assets/logo.png'
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
@@ -64,7 +64,7 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: `url(${logo})` }}>
+    <div className="min-h-screen flex items-center justify-center bg-cover bg-center opacity-85" style={{ backgroundImage: `url(${logo})` }}>
       <div className="container mx-auto p-6 bg-white rounded-lg shadow-lg max-w-md">
         <h2 className="text-3xl font-bold mb-6 text-gray-800">Registrarse</h2>
         <form onSubmit={handleSubmit}>
@@ -129,7 +129,7 @@ const RegisterPage = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-gray-800 hover:bg-gray-900 text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:shadow-outline transition-all duration-300"
+            className="w-full bg-teal-600 hover:bg-teal-900 text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:shadow-outline transition-all duration-300"
           >
             Registrarse
           </button>

@@ -2,7 +2,7 @@ import { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { UserContext } from './UserContext';
-import logo from '../assets/azul.webp';  
+import logo from '../assets/logo.png';  
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
@@ -58,8 +58,8 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: `url(${logo})` }}>
-      <div className="container mx-auto p-6 bg-white rounded-lg shadow-lg max-w-md">
+    <div className="min-h-screen flex items-center justify-center bg-cover bg-center opacity-85" style={{ backgroundImage: `url(${logo})` }}>
+      <div className="container mx-auto p-6 bg-white rounded-lg shadow-lg max-w-md opacity-95">
         <h2 className="text-3xl font-bold mb-6 text-gray-800">Iniciar Sesión</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-6">
@@ -88,7 +88,7 @@ const LoginPage = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-gray-800 hover:bg-gray-900 text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:shadow-outline transition-all duration-300"
+            className="w-full bg-teal-600 hover:bg-teal-900 text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:shadow-outline transition-all duration-300"
           >
             Iniciar Sesión
           </button>
