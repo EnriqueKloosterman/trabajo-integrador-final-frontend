@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import emailjs from "@emailjs/browser";
 
 function Contact() {
+  const form = useRef();
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
+    user_name: "",
+    user_email: "",
     message: "",
   });
 
@@ -17,6 +19,17 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    emailjs.sendForm('service_tr6oqxn', 'template_bcdw728', form.current, 'H4E7nNLLCarlAy5XH')
+      .then((result) => {
+        console.log(result.text);
+        setFormData({
+          user_name: "",
+          user_email: "",
+          message: "",
+        });
+      }, (error) => {
+        console.log(error.text);
+      });
   };
 
   return (
@@ -31,12 +44,12 @@ function Contact() {
         Puedes enviarnos un correo electrónico a <a href="mailto:info@aventurasenlacocina.com" className="text-black hover:underline">info@aventurasenlacocina.com</a> o llenar el formulario de contacto a continuación.
       </p>
 
-      <form onSubmit={handleSubmit} className="mt-8">
+      <form ref={form} onSubmit={handleSubmit} className="mt-8">
         <div className="grid grid-cols-1 gap-6">
           <input
             type="text"
-            id="name"
-            name="name"
+            id="user_name"
+            name="user_name"
             value={formData.name}
             onChange={handleChange}
             placeholder="Tu nombre"
@@ -45,8 +58,8 @@ function Contact() {
           />
           <input
             type="email"
-            id="email"
-            name="email"
+            id="user_email"
+            name="user_email"
             value={formData.email}
             onChange={handleChange}
             placeholder="Tu correo electrónico"
@@ -67,7 +80,7 @@ function Contact() {
         <div className="text-center mt-8">
           <button
             type="submit"
-            className="bg-gray-800 hover:bg-gray-700 text-white font-semibold px-8 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-800 active:bg-gray-900 transition-colors duration-300"
+            className="bg-teal-600 hover:bg-teal-800 text-white font-semibold px-8 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-800 active:bg-gray-900 transition-colors duration-300"
           >
             Enviar Mensaje
           </button>
