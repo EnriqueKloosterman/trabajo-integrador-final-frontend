@@ -36,7 +36,7 @@ function Article() {
               className="w-full h-48 object-cover"
             />
             <div className="p-4">
-              <h2 className="text-xl font-semibold text-blue-700 mb-2">
+              <h2 className="text-xl font-semibold text-green-800 mb-2">
                 {article.title}
               </h2>
               </div>

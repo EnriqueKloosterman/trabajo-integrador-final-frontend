@@ -36,7 +36,7 @@ const UserProfile = () => {
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-lg max-w-4xl mx-auto">
-      <h1 className="text-3xl font-bold mb-4 text-black">Bienvenido {user.userName} {user.userLastName}</h1>
+      <h1 className="text-3xl font-bold mb-4 text-black text-center">Bienvenido {user.userName} {user.userLastName}</h1>
       <div className="flex items-center justify-center mb-4">
         <img src={user.image} alt="avatar" className="h-32 w-32 rounded-full object-cover" />
       </div>

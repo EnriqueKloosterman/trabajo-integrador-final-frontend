@@ -36,7 +36,7 @@ function Recipe() {
               className="w-full h-48 object-cover"
             />
             <div className="p-4">
-              <h2 className="text-xl font-semibold text-blue-700 mb-2">
+              <h2 className="text-xl font-semibold text-green-800 mb-2">
                 {recipe.title}
               </h2>
               <div className="pl-6">

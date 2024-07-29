@@ -71,7 +71,7 @@ function ArticleDetail() {
                 <div className="bg-white rounded-lg shadow-lg overflow-hidden">
                     <img src={article.image} alt={article.title} className="w-full h-64 object-cover" />
                     <div className="p-6">
-                        <h2 className="text-3xl font-semibold text-black mb-4">{article.title}</h2>
+                        <h2 className="text-3xl font-semibold text-green-800 mb-4">{article.title}</h2>
                         <p className="text-m mb-4 italic">
                             {article.user.userName} {article.user.userLastName}{" "}
                             <span className="font-semibold"> {article.user.userEmail}</span>

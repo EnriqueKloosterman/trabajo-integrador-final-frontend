@@ -102,7 +102,7 @@ const RecipeForm = () => {
   };
 
   return (
-    <div className="bg-blue-100 p-6 rounded-lg shadow-lg">
+    <div className="bg-lime-50 p-6 rounded-lg shadow-lg">
       <h2 className="text-2xl font-bold mb-4 text-gray-800">Crear nueva receta</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">

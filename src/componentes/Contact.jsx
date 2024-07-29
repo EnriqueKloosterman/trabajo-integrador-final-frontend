@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
+import Swal from 'sweetalert2';
 
 function Contact() {
   const form = useRef();
@@ -27,6 +28,12 @@ function Contact() {
           user_email: "",
           message: "",
         });
+        Swal.fire({
+          icon: 'success',
+          title: '¡Mensaje enviado!',
+          text: 'Gracias por contactarnos. Nos pondremos en contacto contigo pronto.',
+          timer: 3000
+        });
       }, (error) => {
         console.log(error.text);
       });
@@ -50,7 +57,7 @@ function Contact() {
             type="text"
             id="user_name"
             name="user_name"
-            value={formData.name}
+            value={formData.user_name}
             onChange={handleChange}
             placeholder="Tu nombre"
             className="block w-full px-4 py-3 placeholder-gray-500 border rounded-lg focus:outline-none focus:border-black"
@@ -60,7 +67,7 @@ function Contact() {
             type="email"
             id="user_email"
             name="user_email"
-            value={formData.email}
+            value={formData.user_email}
             onChange={handleChange}
             placeholder="Tu correo electrónico"
             className="block w-full px-4 py-3 placeholder-gray-500 border rounded-lg focus:outline-none focus:border-black"

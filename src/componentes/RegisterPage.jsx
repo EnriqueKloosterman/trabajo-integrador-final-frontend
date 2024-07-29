@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Swal from 'sweetalert2';
-import logo from '../assets/logo.png'
+import logo from '../assets/logo.png';
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
@@ -31,11 +31,10 @@ const RegisterPage = () => {
         method: 'POST',
         body: formDataToSend,
       });
-      if (response.status === 201) {
-        const responseData = await response.json(); 
+      if (response.status === 201) { 
         Swal.fire({
           icon: 'success',
-          title: `Registro exitoso, ¡Bienvenido ${responseData.userName}!`,
+          title: `Registro exitoso, ¡Bienvenido ${formData.userName}!`,
           showConfirmButton: false,
           timer: 2000,
         });

@@ -103,7 +103,7 @@ function CreateArticle() {
   };
 
   return (
-    <div className="bg-blue-100 p-6 rounded-lg shadow-lg">
+    <div className="bg-lime-50 p-6 rounded-lg shadow-lg">
       <h2 className="text-3xl font-bold mb-8 text-gray-800">Crear un nuevo artículo</h2>
       <div className="bg-white shadow-md rounded-lg p-6 mb-8">
         <h3 className="text-xl font-semibold text-blue-900 mb-4">Instrucciones para subir artículos</h3>
