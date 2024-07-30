@@ -57,7 +57,7 @@ function RecipeDetail() {
     );
   }
 
-  const canDelete = user && recipe.user && (user.userEmail === recipe.user.userEmail || user.user_role === 'admin');
+  const canDelete = user && recipe.user && (user.userEmail === recipe.user.userEmail || (user.role === 'admin' || user.user_role === 'admin'));
 
   return (
     <div className="bg-gray-100">

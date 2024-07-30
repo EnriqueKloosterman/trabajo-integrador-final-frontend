@@ -28,11 +28,11 @@ const UserProvider = ({ children }) => {
     navigate("/");
   };
 
-  const isAdmin = () => {
-    return user?.role === 'admin';
+  const isAdmin = async () => {
+    return await user?.role === 'admin';
   };
 
-  const isUser = () => {
+  const isUser =  () => {
     return user?.role === 'user';
   };
 

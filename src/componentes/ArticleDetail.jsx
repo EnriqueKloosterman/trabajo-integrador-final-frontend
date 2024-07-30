@@ -54,7 +54,7 @@ function ArticleDetail() {
             throw new Error("Error deleting article:", error);
         }
     }
-
+    console.log(user)
     if (!article) {
         return (
             <div className="flex items-center justify-center min-h-screen">
@@ -63,7 +63,8 @@ function ArticleDetail() {
         );
     }
 
-    const canDelete = user && article.user && (user.userEmail === article.user.userEmail || user.user_role === "admin");
+    const canDelete = user && article.user && (( user.role === "admin" || user.user_role === 'admin') || user.userEmail === article.user.userEmail);
+
 
     return (
         <div className="bg-gray-100">

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Swal from 'sweetalert2';
 import logo from '../assets/logo.png';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
@@ -10,7 +11,9 @@ const RegisterPage = () => {
     userPassword: '',
     image: null,
   });
-
+  
+  const navigate = useNavigate();
+  
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     if (name === 'image') {
@@ -45,6 +48,7 @@ const RegisterPage = () => {
           userPassword: '',
           image: null,
         });
+        navigate('/login');
       } else {
         Swal.fire({
           icon: 'error',

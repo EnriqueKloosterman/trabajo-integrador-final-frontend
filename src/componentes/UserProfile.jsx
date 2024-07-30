@@ -3,7 +3,7 @@ import { UserContext } from './UserContext';
 import { Link } from 'react-router-dom';
 
 const UserProfile = () => {
-  const { user, isAdmin } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const [articles, setArticles] = useState([]);
   const [recipes, setRecipes] = useState([]);
 
@@ -28,6 +28,7 @@ const UserProfile = () => {
         .then(data => setRecipes(data))
         .catch(error => console.error('Error fetching recipes:', error));
     }
+    console.log(user);
 }, [user]);
 
   if (!user) {
@@ -54,7 +55,7 @@ const UserProfile = () => {
           </button>
         </Link>
       </div>
-      {isAdmin() && (
+      {(user.role === 'admin' || user.user_role === 'admin') && (
         <div className="text-center mt-8">
           <Link to="/users">
             <button className="bg-teal-600 hover:bg-teal-800 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-gray-900 transition duration-150 ease-in-out shadow-md hover:shadow-lg">

@@ -97,7 +97,7 @@ function Comments({ articleId, recipeId, user, token }) {
                             <p className="text-sm text-gray-500">
                                 {comment.user.name} {comment.user.lastName} 
                             </p>
-                            {(user && (user.userEmail === comment.user.userEmail || user.role === 'admin')) && (
+                            {(user && (user.userEmail === comment.user.userEmail || (user.role === 'admin' || user.user_role === 'admin'))) && (
                                 <button
                                     onClick={() => handleDeleteComment(comment.commentId)}
                                     className="ml-2 text-sm text-red-500"
