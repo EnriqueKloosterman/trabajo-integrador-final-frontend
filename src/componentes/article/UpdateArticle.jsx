@@ -107,7 +107,7 @@ const UpdateArticle = () => {
 
 
     return (
-        <div className="bg-blue-100 p-6 rounded-lg shadow-lg">
+        <div className="bg-lime-50 p-6 rounded-lg shadow-lg">
             <h2 className="text-2xl font-bold mb-4 text-gray-800">Actualizar Articulo</h2>
             <div className="bg-white shadow-md rounded-lg p-6 mb-8">
                 <h3 className="text-xl font-semibold text-blue-900 mb-4">Instrucciones para actualizar articulos</h3>
@@ -179,7 +179,7 @@ const UpdateArticle = () => {
                     <div className="text-right">
                         <button
                             type="submit"
-                            className="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-gray-900"
+                            className="bg-teal-600 hover:bg-teal-800 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-gray-900 mt-5"
                         >
                             Actualizar Artículo
                         </button>

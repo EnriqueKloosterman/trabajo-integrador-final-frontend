@@ -68,7 +68,7 @@ const RegisterPage = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-cover bg-center opacity-85" style={{ backgroundImage: `url(${logo})` }}>
-      <div className="container mx-auto p-6 bg-white rounded-lg shadow-lg max-w-md">
+      <div className="container mx-auto p-6 bg-white rounded-lg shadow-lg max-w-md opacity-90">
         <h2 className="text-3xl font-bold mb-6 text-gray-800">Registrarse</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-6">
@@ -80,7 +80,7 @@ const RegisterPage = () => {
               value={formData.userName}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500"
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500 "
             />
           </div>
           <div className="mb-6">

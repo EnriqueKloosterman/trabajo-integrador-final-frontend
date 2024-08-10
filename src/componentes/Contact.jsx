@@ -40,7 +40,7 @@ function Contact() {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 bg-lime-50">
       <h1 className="text-4xl font-bold text-black mb-8">¡Contáctanos!</h1>
       <p className="text-lg text-gray-700">
         ¡Hola! Somos Malvina Pacheco, Florencia Da Rosa y Enrique Kloosterman, un grupo de estudiantes de programación full-stack.
