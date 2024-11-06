@@ -105,24 +105,6 @@ The application uses SweetAlert for enhanced alert messages. To use SweetAlert, 
      import Swal from 'sweetalert2';
     ```
 
-3. **Use SweetAlert in your component:**
-    Here is an example of how to use SweetAlert for a success message:
-
-    ```
-    const handleSubmit = () => {
-    	Swal.fire({
-            title: 'Success!',
-            text: 'Your recipe has been submitted.',
-            icon: 'success',
-            confirmButtonText: 'Cool'
-            });
-        };
-
-    return (
-        <button onClick={handleSubmit}>Submit Recipe</button>
-    );
-    ```
-
 
 ## License
 
